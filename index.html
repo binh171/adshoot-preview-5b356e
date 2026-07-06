@@ -630,6 +630,62 @@
   .screen[data-s="store"] .nav{left:16px; right:84px; transform:none; width:auto}
   .phone.navmin .screen[data-s="store"] .nav{width:auto}
 
+  /* ============ V6: P1 concept polish ============ */
+  /* 1.1 AHA overlay chips -> glass */
+  .achip{background:rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.35); backdrop-filter:blur(12px) saturate(160%); -webkit-backdrop-filter:blur(12px) saturate(160%); box-shadow:none}
+  .badge{background:rgba(255,255,255,.28); border:1px solid rgba(255,255,255,.45); backdrop-filter:blur(12px) saturate(160%); -webkit-backdrop-filter:blur(12px) saturate(160%); color:#fff}
+  .cscore{background:rgba(14,92,67,.55); border:1px solid rgba(255,255,255,.3); backdrop-filter:blur(12px) saturate(160%); -webkit-backdrop-filter:blur(12px) saturate(160%)}
+  /* 1.2 active tab icon: duotone fill inside outline */
+  .nav button.on svg rect,.nav button.on svg circle{fill:rgba(14,92,67,.16)}
+  /* 1.3 platform logo badge on export buttons */
+  .plogo{width:18px;height:18px;border-radius:50%;color:#fff;font-size:10px;font-weight:800;display:grid;place-items:center;flex:none}
+  /* 1.4 hero-card tool chips -> glass */
+  .hc-chip{background:rgba(255,255,255,.72); backdrop-filter:blur(8px) saturate(160%); -webkit-backdrop-filter:blur(8px) saturate(160%); border:1px solid rgba(255,255,255,.5)}
+  /* 1.5 onboarding chips with product thumbnails */
+  .qchip .qg.qgi{overflow:hidden; padding:0; background:#fff}
+  .qchip .qg.qgi img{width:100%; height:100%; object-fit:cover; display:block}
+  .qchip.sel .qg.qgi{box-shadow:0 0 0 2px var(--em)}
+  /* 1.6 AI spark on editor AI tools */
+  .ed-tool{position:relative}
+  .ed-grid .ed-tool:nth-child(4)::after,.ed-grid .ed-tool:nth-child(5)::after{content:'✦'; position:absolute; top:5px; right:9px; font-size:9px; color:#7FD4B3}
+  /* 1.7 concentric radii in gen sheet */
+  .gdetect{border-radius:12px} .gbox{border-radius:12px} .gslot{border-radius:10px} .gprompt{border-radius:12px}
+
+  /* ============ V6: P2 interaction depth ============ */
+  /* 2.1 High-impression: Reels-style snap feed, live motion on centered card */
+  .screen[data-s="advideo"] .hirow{scroll-snap-type:x mandatory; padding:13px 36px 6px; gap:12px}
+  .screen[data-s="advideo"] .hicard{width:262px; scroll-snap-align:center}
+  .hicard .m{transition:transform .4s ease}
+  .hicard.live .m{animation:cinema 5.5s ease-in-out infinite alternate}
+  .hicard.live .hiplay{opacity:0}
+  .himeta .v{font-size:20px}
+  /* 2.2 product Switch: dropdown -> bottom sheet */
+  .ctx.open{position:static}
+  .ctx.open::after{content:''; position:absolute; inset:0; z-index:30; background:rgba(0,0,0,.5)}
+  .ctx.open .ctxdrop{position:absolute; left:0; right:0; top:auto; bottom:0; z-index:31; border-radius:24px 24px 0 0;
+    box-shadow:0 -14px 44px rgba(0,0,0,.45); padding:18px 8px 12px; border:none}
+  .ctx.open .ctxdrop::before{content:''; position:absolute; top:7px; left:50%; transform:translateX(-50%); width:36px; height:5px; border-radius:3px; background:rgba(127,212,179,.4)}
+  .ctx.open .ctxitem{padding:12px 16px}
+  /* 2.4 generating: 9:16 skeleton shimmer */
+  .gpvis{width:176px; aspect-ratio:9/16; padding:0; border-radius:16px; background:linear-gradient(160deg,#E8E8ED,#F7F7F9); display:grid; place-items:center}
+  .gpvis img{display:none}
+  .gpspark{font-size:30px}
+  /* 2.5 result slide-up reveal */
+  #gen.done .gresult{animation:rgrise .38s var(--ease)}
+  @keyframes rgrise{from{opacity:0; transform:translateY(22px) scale(.98)} to{opacity:1; transform:none}}
+  /* 2.6 search sheet (from search island) */
+  .sscrim{position:absolute; inset:0; z-index:44; background:rgba(0,0,0,.4); opacity:0; pointer-events:none; transition:opacity .3s}
+  .sscrim.open{opacity:1; pointer-events:auto}
+  .ssheet{position:absolute; left:0; right:0; bottom:0; z-index:45; transform:translateY(105%); transition:transform .4s var(--ease);
+    background:var(--paper2); border-radius:26px 26px 0 0; box-shadow:0 -14px 44px rgba(0,0,0,.3); padding:24px 20px 26px}
+  .ssheet.open{transform:none}
+  .ssheet::before{content:''; position:absolute; top:8px; left:50%; transform:translateX(-50%); width:36px; height:5px; border-radius:3px; background:rgba(0,0,0,.16)}
+  .ssheet .sfield{display:flex; gap:9px; align-items:center; background:rgba(118,118,128,.12); border-radius:999px; padding:12px 16px; color:var(--muted); font-size:15px; font-weight:500}
+  .ssheet .sfield svg{width:18px; height:18px; stroke:var(--muted); fill:none; stroke-width:2; flex:none}
+  .ssheet .sh{font-size:11px; font-weight:800; letter-spacing:.08em; color:var(--muted); margin:16px 0 9px; text-transform:uppercase}
+  .ssheet .srow{display:flex; flex-wrap:wrap; gap:8px}
+  .ssheet .schip{padding:8px 14px; border-radius:999px; background:var(--card); box-shadow:0 1px 3px rgba(0,0,0,.06); font-size:13px; font-weight:600; color:var(--ink2); cursor:pointer}
+
   /* ============ V3: sticky glass headers (large-title behavior) ============ */
   .stop,.prhd,.pdtop,.ap-top{position:sticky; top:0; z-index:25; transition:background .25s, box-shadow .25s}
   .screen.scrolled .stop,.screen.scrolled .prhd,.screen.scrolled .pdtop,.screen.scrolled .ap-top{
@@ -684,7 +740,7 @@
   .gtop{padding:20px 20px 10px}
   .gx{background:rgba(118,118,128,.12); border:none}
 
-  @media (prefers-reduced-motion:reduce){ .orbit,.timg,.whero img,.heroc,.heroc::after,.hs-ring,.storefab{animation:none!important} .acaps .eyebrow,.acaps .title,.acaps .sub{transition-duration:.01ms!important} .prgrid.revealp .prcard{animation:none; opacity:1; transform:none} }
+  @media (prefers-reduced-motion:reduce){ .orbit,.timg,.whero img,.heroc,.heroc::after,.hs-ring,.storefab,.genBtn,.gpvis::after,.hicard.live .m,.hglow,.hscan::before,.hpulse,.hspark i{animation:none!important} .acaps .eyebrow,.acaps .title,.acaps .sub{transition-duration:.01ms!important} .prgrid.revealp .prcard{animation:none; opacity:1; transform:none} }
 
 
   /* ====================================================================== */
@@ -1203,7 +1259,26 @@
 
       <!-- floating create/edit CTA (follows the screen) -->
       <button class="storefab" onclick="openPick()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 3.5l6 6M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19l-4 1z"/></svg>Create &amp; edit</button>
-      <button class="sisl" onclick="toast('Search templates, tools, designs (demo)')" title="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></button>
+      <button class="sisl" onclick="toggleSearch(true)" title="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></button>
+
+      <!-- search sheet (opened from the island) -->
+      <div class="sscrim" id="sscrim" onclick="toggleSearch(false)"></div>
+      <div class="ssheet" id="ssheet">
+        <div class="sfield"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>Search templates, tools, designs…</div>
+        <div class="sh">Recent</div>
+        <div class="srow">
+          <span class="schip" onclick="toast('Search: shopify square (demo)')">shopify square</span>
+          <span class="schip" onclick="toast('Search: remove background (demo)')">remove background</span>
+          <span class="schip" onclick="toast('Search: on-model (demo)')">on-model</span>
+        </div>
+        <div class="sh">Trending</div>
+        <div class="srow">
+          <span class="schip" onclick="toast('Search: ugc ad (demo)')">✦ ugc ad</span>
+          <span class="schip" onclick="toast('Search: editorial try-on (demo)')">✦ editorial try-on</span>
+          <span class="schip" onclick="toast('Search: amazon main (demo)')">amazon main</span>
+          <span class="schip" onclick="toast('Search: 360 showcase (demo)')">360 showcase</span>
+        </div>
+      </div>
 
       <!-- bottom nav (3 tabs) -->
       <div class="nav">
@@ -1629,8 +1704,8 @@
           <div class="grexp"><div class="gh2">Export per placement</div></div>
           <div class="grbtns">
             <button class="grbtn pri" onclick="toast('Downloaded selected placements (demo)')">Download selected formats</button>
-            <button class="grbtn sec" onclick="toast('Posting to Meta Ads (demo)')">Post to Meta Ads</button>
-            <button class="grbtn sec" onclick="toast('Posting to TikTok (demo)')">Post to TikTok</button>
+            <button class="grbtn sec" onclick="toast('Posting to Meta Ads (demo)')"><span class="plogo" style="background:#0866FF">M</span>Post to Meta Ads</button>
+            <button class="grbtn sec" onclick="toast('Posting to TikTok (demo)')"><span class="plogo" style="background:#010101">♪</span>Post to TikTok</button>
           </div>
         </div>
       </div>
@@ -1780,12 +1855,24 @@
     {label:'Social & ads', items:['Instagram','Facebook','Pinterest','Google']}
   ];
   var q1sel = {'Apparel':true}, q2sel = {'Shopify':true};
+  var CAT_IMGS = {
+    'Apparel':'onboarding/_aha_onmodel/dress_cutout.png',
+    'Footwear':'onboarding/product_shoes/04_onfoot_ed.png',
+    'Bags':'onboarding/product_tote_v2/05_lifestyle.jpg',
+    'Jewelry':'onboarding/product_jewelry/04_model_ed.png',
+    'Watches':'onboarding/product_chrono/03_on_wrist.jpg',
+    'Eyewear':'onboarding/product_sunglasses/05_lifestyle.jpg',
+    'Beauty':'onboarding/product_lipstick_v2/04_on_lips.jpg',
+    'Fragrance':'onboarding/product_perfume/04_lifestyle.jpg',
+    'Home decor':'onboarding/product_candle/04_lifestyle.jpg'
+  };
   function buildGroups(host, groups, sel, onchange, opts){
     opts = opts || {};
     host.innerHTML = groups.map(function(g){
       var chips = g.items.map(function(m){
         var qg;
-        if(opts.logos && opts.logos[m]){ var lg=opts.logos[m]; qg='<span class="qg" style="background:'+lg.b+';border-color:'+lg.b+';color:#fff;font-weight:800">'+lg.t+'</span>'; }
+        if(opts.imgs && opts.imgs[m]){ qg='<span class="qg qgi"><img src="'+opts.imgs[m]+'" alt=""></span>'; }
+        else if(opts.logos && opts.logos[m]){ var lg=opts.logos[m]; qg='<span class="qg" style="background:'+lg.b+';border-color:'+lg.b+';color:#fff;font-weight:800">'+lg.t+'</span>'; }
         else if(opts.icons && opts.icons[m]){ qg='<span class="qg" style="background:#fff;font-size:13px">'+opts.icons[m]+'</span>'; }
         else { qg='<span class="qg">'+m[0]+'</span>'; }
         return '<div class="qchip'+(sel[m]?' sel':'')+'" data-m="'+m+'">'+qg+m+'</div>';
@@ -1798,7 +1885,7 @@
   function cnt(sel){ return Object.keys(sel).filter(function(k){return sel[k];}).length; }
   function q1change(){ var n=cnt(q1sel); document.getElementById('q1cta').disabled=n===0; document.getElementById('q1note').textContent=n? (n+' selected'):'Pick at least one'; }
   function q2change(){ var n=cnt(q2sel); document.getElementById('q2cta').disabled=n===0; document.getElementById('q2note').textContent=n+(n===1?' marketplace selected':' marketplaces selected'); }
-  buildGroups(document.getElementById('q1chips'), CAT_GROUPS, q1sel, q1change, {icons:CAT_ICONS});
+  buildGroups(document.getElementById('q1chips'), CAT_GROUPS, q1sel, q1change, {icons:CAT_ICONS, imgs:CAT_IMGS});
   buildGroups(document.getElementById('q2chips'), MK_GROUPS, q2sel, q2change, {logos:MK_LOGO});
 
   /* ============ paywall ============ */
@@ -1884,7 +1971,7 @@
   skipBtn.addEventListener('click', function(){ openPaywall(); });
   document.getElementById('replay2').addEventListener('click', function(){
     welcomeStarted=false; q1sel={'Apparel':true}; q2sel={'Shopify':true};
-    buildGroups(document.getElementById('q1chips'),CAT_GROUPS,q1sel,q1change,{icons:CAT_ICONS}); buildGroups(document.getElementById('q2chips'),MK_GROUPS,q2sel,q2change,{logos:MK_LOGO});
+    buildGroups(document.getElementById('q1chips'),CAT_GROUPS,q1sel,q1change,{icons:CAT_ICONS, imgs:CAT_IMGS}); buildGroups(document.getElementById('q2chips'),MK_GROUPS,q2sel,q2change,{logos:MK_LOGO});
     go('welcome');
   });
 
@@ -2254,6 +2341,40 @@
     var setX=function(cx){ var r=ba.getBoundingClientRect(); var p=Math.max(6, Math.min(94, (cx-r.left)/r.width*100)); ba.style.setProperty('--x', p+'%'); };
     ba.addEventListener('pointerdown', function(e){ ba.setPointerCapture(e.pointerId); setX(e.clientX); });
     ba.addEventListener('pointermove', function(e){ if(e.buttons) setX(e.clientX); });
+  }
+
+  /* search sheet (island) */
+  window.toggleSearch=function(on){
+    document.getElementById('ssheet').classList.toggle('open', on);
+    document.getElementById('sscrim').classList.toggle('open', on);
+  };
+
+  /* High-impression: play motion on the snapped-center card */
+  var hiRow=document.getElementById('hirow');
+  if(hiRow && 'IntersectionObserver' in window){
+    var hio=new IntersectionObserver(function(es){
+      es.forEach(function(en){ en.target.classList.toggle('live', en.intersectionRatio>=.7); });
+    }, {root:hiRow, threshold:.7});
+    [].slice.call(hiRow.children).forEach(function(c){ hio.observe(c); });
+  }
+
+  /* gen sheet: drag handle to dismiss (snap back under threshold) */
+  var genEl=document.getElementById('gen'), gtopEl=genEl && genEl.querySelector('.gtop');
+  if(gtopEl){
+    var gy0=null;
+    gtopEl.addEventListener('pointerdown', function(e){
+      if(e.target.closest('.gx,.gchip')) return;
+      gy0=e.clientY; gtopEl.setPointerCapture(e.pointerId); genEl.style.transition='none';
+    });
+    gtopEl.addEventListener('pointermove', function(e){
+      if(gy0===null) return; var dy=Math.max(0, e.clientY-gy0);
+      genEl.style.transform='translateY('+dy+'px)';
+    });
+    gtopEl.addEventListener('pointerup', function(e){
+      if(gy0===null) return; var dy=Math.max(0, e.clientY-gy0); gy0=null;
+      genEl.style.transition=''; genEl.style.transform='';
+      if(dy>140){ var x=document.getElementById('genX'); if(x) x.click(); }
+    });
   }
 })();
 </script>

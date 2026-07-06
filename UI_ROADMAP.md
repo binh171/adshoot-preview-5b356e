@@ -10,6 +10,9 @@
 - **v3**: quét sạch màu be hardcode, glass-chip/badge system, active đen→green, sticky glass header + large-title shrink, **AdVideo dark mode** + hero tràn mép + feed card 210px, **Editor full-bleed** + toolbar/dock kính + Done, Product card 4:5 tên đè gradient, gen sheet = bottom sheet + nút Generate gradient AI + shimmer sweep, paywall timeline Today/Day5/Day7, Apply row "✦ Suggested"
 - **v4**: before/after drag slider (Store), search island kính cạnh tab bar, dark contrast fixes
 - **v5**: chip lọc Store + Apply — ký tự text 🏷♡◫✎ → SVG stroke icon đồng bộ tab bar (feedback trực tiếp từ user)
+- **v6 (P1+P2 trọn gói)**: AHA chips glass · tab icon duotone fill active · logo Meta/TikTok · hero chips glass · Q1 chips ảnh sản phẩm thật · ✦ tool AI editor · concentric gen sheet · **feed High-impression card 262px snap-center + Ken Burns live** · **Switch → bottom sheet** (scrim + handle) · gen sheet kéo-để-đóng thật · generating skeleton 9:16 · result slide-up · **search island → search sheet** (Recent/Trending) · reduced-motion đủ bộ
+
+> P1 ✅ xong · P2 ✅ xong · P3 còn 3.1 dark toàn app, 3.2 perf audit, 3.5 tokens doc · P0.2/P0.3 chờ CEO + iPhone
 
 ---
 
