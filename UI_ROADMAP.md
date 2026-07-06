@@ -12,6 +12,8 @@
 - **v5**: chip lọc Store + Apply — ký tự text 🏷♡◫✎ → SVG stroke icon đồng bộ tab bar (feedback trực tiếp từ user)
 - **v6 (P1+P2 trọn gói)**: AHA chips glass · tab icon duotone fill active · logo Meta/TikTok · hero chips glass · Q1 chips ảnh sản phẩm thật · ✦ tool AI editor · concentric gen sheet · **feed High-impression card 262px snap-center + Ken Burns live** · **Switch → bottom sheet** (scrim + handle) · gen sheet kéo-để-đóng thật · generating skeleton 9:16 · result slide-up · **search island → search sheet** (Recent/Trending) · reduced-motion đủ bộ
 
+- **v7 (feedback user)**: All tools bỏ hộp-lồng-hộp → icon squircle trắng 60px trên nền, 4 cột × 2 hàng; search island bỏ khỏi khu tab bar → nút tròn glass trên header Store (cạnh ◆40), tab bar về giữa
+
 > P1 ✅ xong · P2 ✅ xong · P3 còn 3.1 dark toàn app, 3.2 perf audit, 3.5 tokens doc · P0.2/P0.3 chờ CEO + iPhone
 
 ---

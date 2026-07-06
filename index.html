@@ -620,15 +620,12 @@
     background:rgba(28,28,30,.45); backdrop-filter:blur(8px) saturate(160%); border:1px solid rgba(255,255,255,.25); pointer-events:none}
   .ba-tag.l{left:10px} .ba-tag.r{right:10px; background:rgba(14,92,67,.6)}
 
-  /* ============ V4: search island (iOS 26) — Store only ============ */
-  .sisl{position:absolute; right:16px; bottom:16px; z-index:16; width:54px; height:54px; border-radius:50%; border:1px solid rgba(255,255,255,.55); cursor:pointer;
-    display:grid; place-items:center; background:var(--glass);
-    backdrop-filter:blur(24px) saturate(180%); -webkit-backdrop-filter:blur(24px) saturate(180%);
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.65), 0 8px 32px rgba(0,0,0,.16)}
-  .sisl:active{transform:scale(.94)}
-  .sisl svg{width:22px; height:22px; stroke:var(--ink2); fill:none; stroke-width:2}
-  .screen[data-s="store"] .nav{left:16px; right:84px; transform:none; width:auto}
-  .phone.navmin .screen[data-s="store"] .nav{width:auto}
+  /* ============ V4/V7: search — round glass button in the Store header ============ */
+  .shbtn{width:34px; height:34px; border-radius:50%; cursor:pointer; display:grid; place-items:center;
+    background:rgba(255,255,255,.72); backdrop-filter:blur(12px) saturate(160%); -webkit-backdrop-filter:blur(12px) saturate(160%);
+    border:1px solid rgba(0,0,0,.06); box-shadow:inset 0 1px 0 rgba(255,255,255,.7), 0 2px 8px rgba(0,0,0,.06)}
+  .shbtn:active{transform:scale(.92)}
+  .shbtn svg{width:17px; height:17px; stroke:var(--ink2); fill:none; stroke-width:2}
 
   /* ============ V6: P1 concept polish ============ */
   /* 1.1 AHA overlay chips -> glass */
@@ -1048,13 +1045,14 @@
     .as-logo{opacity:1; transform:translate(-50%,-50%)}
   }
   /* Store · full tool grid (Photoroom-style, chip-filtered) */
-  .toolgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:11px; padding:2px 22px 4px}
-  .toolc{display:flex; flex-direction:column; align-items:center; gap:10px; padding:16px 6px; border-radius:16px; background:#fff; border:none; cursor:pointer; transition:transform .18s var(--ease), box-shadow .25s; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,.06)}
-  .toolc:active{transform:scale(.96)} .toolc:hover{transform:translateY(-2px); box-shadow:0 2px 5px rgba(26,24,20,.05), 0 14px 28px rgba(26,24,20,.12); border-color:#e6ddca}
-  .toolc .ic{width:56px; height:56px; border-radius:18px; display:grid; place-items:center; background:var(--em-soft); box-shadow:inset 0 1px 0 rgba(255,255,255,.85), 0 3px 8px rgba(14,92,67,.12)}
-  .toolc:hover .ic{background:linear-gradient(150deg,#EAF3EF,#C9DFD4)}
-  .toolc .ic svg{width:22px; height:22px; stroke:var(--em-d); fill:none; stroke-width:1.7; filter:drop-shadow(0 1px 0 rgba(255,255,255,.55))}
-  .toolc .tl{font-size:11px; font-weight:600; color:var(--ink); line-height:1.15}
+  /* icon-first grid (no nested card box) — reads like iOS app grid */
+  .toolgrid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px 8px; padding:4px 20px 4px}
+  .toolc{display:flex; flex-direction:column; align-items:center; gap:8px; padding:2px 0; background:none; border:none; box-shadow:none; cursor:pointer; transition:transform .18s var(--ease); text-align:center}
+  .toolc:active{transform:scale(.93)} .toolc:hover .ic{transform:translateY(-2px); box-shadow:0 8px 18px rgba(0,0,0,.1)}
+  .toolc .ic{width:60px; height:60px; border-radius:19px; display:grid; place-items:center; background:#fff;
+    box-shadow:0 2px 8px rgba(0,0,0,.07); transition:transform .18s var(--ease), box-shadow .2s}
+  .toolc .ic svg{width:24px; height:24px; stroke:var(--em); fill:none; stroke-width:1.9}
+  .toolc .tl{font-size:11px; font-weight:600; color:var(--ink2); line-height:1.15}
   .toolc.hide{display:none}
   .screen[data-s="store"] .hide{display:none!important}
 </style>
@@ -1127,7 +1125,10 @@
       <div class="scroll" style="padding-bottom:96px">
         <div class="stop">
           <div class="brandlock"><svg class="bl-ico" viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="32" fill="none" stroke="#0E5C43" stroke-width="5"/><circle cx="42" cy="42" r="22" fill="none" stroke="#D8B66A" stroke-width="2.6"/><path d="M47 42 L39 37.2 L39 46.8 Z" fill="#D8B66A"/></svg><span class="bl-wm">Ad<i>Short</i></span></div>
-          <div class="tools"><span class="chipc">◆ 40</span></div>
+          <div class="tools">
+            <button class="shbtn" onclick="toggleSearch(true)" title="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></button>
+            <span class="chipc">◆ 40</span>
+          </div>
         </div>
 
         <!-- category chips (top-level filters) -->
@@ -1259,9 +1260,7 @@
 
       <!-- floating create/edit CTA (follows the screen) -->
       <button class="storefab" onclick="openPick()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 3.5l6 6M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19l-4 1z"/></svg>Create &amp; edit</button>
-      <button class="sisl" onclick="toggleSearch(true)" title="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></button>
-
-      <!-- search sheet (opened from the island) -->
+      <!-- search sheet (opened from the header search button) -->
       <div class="sscrim" id="sscrim" onclick="toggleSearch(false)"></div>
       <div class="ssheet" id="ssheet">
         <div class="sfield"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>Search templates, tools, designs…</div>
@@ -2075,7 +2074,7 @@
     var shown=0;
     [].slice.call(store.querySelectorAll('#toolGrid .toolc')).forEach(function(t){
       if(t.classList.contains('hide')) return;
-      if(++shown>6) t.classList.add('hide');
+      if(++shown>8) t.classList.add('hide');
     });
     // 2) hide every section, then re-show + reorder + retitle the ones this category curates
     ['popular','alltools','formats','templates','hero'].forEach(function(g){
