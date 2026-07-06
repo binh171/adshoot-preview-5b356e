@@ -1141,6 +1141,52 @@
   .screen.scrolled .stop,.screen.scrolled .prhd,.screen.scrolled .pdtop,.screen.scrolled .ap-top{
     backdrop-filter:blur(26px) saturate(200%) brightness(1.04); -webkit-backdrop-filter:blur(26px) saturate(200%) brightness(1.04)}
   @media (prefers-reduced-motion:reduce){ .nav::before{animation:none!important} }
+
+  /* ============ V11: LIQUID EVERYWHERE — sheets, tinted FABs, media chips, editor bars ============ */
+  /* sheets become true translucent material (content ghosts through heavy blur) */
+  #gen,.ssheet{
+    border:1px solid transparent;
+    background:linear-gradient(rgba(245,245,248,.88),rgba(245,245,248,.88)) padding-box,
+      linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.25) 18%, rgba(255,255,255,0) 55%) border-box;
+    backdrop-filter:blur(36px) saturate(180%); -webkit-backdrop-filter:blur(36px) saturate(180%)}
+  .phone.dark #gen,.phone.dark .ssheet{
+    background:linear-gradient(rgba(20,22,24,.88),rgba(20,22,24,.88)) padding-box,
+      linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,.09) 18%, rgba(255,255,255,0) 55%) border-box}
+  .gfoot{background:rgba(245,245,248,.6); backdrop-filter:blur(18px) saturate(160%); -webkit-backdrop-filter:blur(18px) saturate(160%)}
+  .phone.dark .gfoot{background:rgba(20,22,24,.6)}
+  .ctx.open .ctxdrop{
+    border:1px solid transparent;
+    background:linear-gradient(rgba(245,245,248,.9),rgba(245,245,248,.9)) padding-box,
+      linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,0) 50%) border-box;
+    backdrop-filter:blur(30px) saturate(180%); -webkit-backdrop-filter:blur(30px) saturate(180%)}
+  .phone.dark .ctx.open .ctxdrop{
+    background:linear-gradient(rgba(24,26,28,.9),rgba(24,26,28,.9)) padding-box,
+      linear-gradient(180deg, rgba(255,255,255,.3), rgba(255,255,255,0) 50%) border-box}
+  /* FABs: solid green -> green tinted glass (glassProminent) */
+  .storefab,.fabMake{
+    border:1px solid transparent;
+    background:linear-gradient(rgba(14,92,67,.85),rgba(14,92,67,.85)) padding-box,
+      linear-gradient(120deg, rgba(255,255,255,.7), rgba(255,255,255,.16) 40%, rgba(255,255,255,.45)) border-box;
+    backdrop-filter:blur(14px) saturate(170%); -webkit-backdrop-filter:blur(14px) saturate(170%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.35), 0 16px 36px rgba(8,52,38,.45)}
+  .storefab:hover,.fabMake:hover{filter:brightness(1.1)}
+  /* every chip/control floating on media gets blur + inner specular */
+  .hitag,.fdur,.tagp,.pvtag,.achip,.badge,.grbadge,.prvbadge,.scenecard .sb,.hc-chip,.pick-x,.pvx,.pw-x,.hiplay,.playmark{
+    backdrop-filter:blur(12px) saturate(170%); -webkit-backdrop-filter:blur(12px) saturate(170%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.4), 0 2px 10px rgba(0,0,0,.25)}
+  .grbadge{background:rgba(14,92,67,.72); border:1px solid rgba(255,255,255,.3)}
+  /* editor floating bars: gradient rim */
+  .ed-top,.ed-grid{
+    border:1px solid transparent;
+    background:linear-gradient(rgba(28,28,30,.6),rgba(28,28,30,.6)) padding-box,
+      linear-gradient(120deg, rgba(255,255,255,.35), rgba(255,255,255,.08) 35%, rgba(255,255,255,.22)) border-box;
+    box-shadow:inset 0 1px 1px rgba(255,255,255,.22), 0 10px 30px rgba(0,0,0,.5)}
+  /* paywall tiers get material */
+  .pw-plan{backdrop-filter:blur(10px) saturate(160%); -webkit-backdrop-filter:blur(10px) saturate(160%)}
+  /* small polish */
+  .pick-tabs{box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+  .toast{box-shadow:inset 0 1px 0 rgba(255,255,255,.18), 0 8px 24px rgba(0,0,0,.35)}
+  .genBtn{box-shadow:inset 0 1px 0 rgba(255,255,255,.35), 0 10px 26px rgba(14,92,67,.35)}
 </style>
 </head>
 <body>
