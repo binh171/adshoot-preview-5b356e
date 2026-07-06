@@ -29,7 +29,7 @@
 |---|---|---|---|
 | 0.1 | Deck so sánh before/after từng màn (f5bbdd vs 5b356e) gửi CEO | S | Screenshot 6 màn × 2 bản, ghép side-by-side |
 | 0.2 | Thu feedback CEO CÓ CẤU TRÚC theo từng màn (không thoại rời) | S | Template: màn → giữ/sửa/bỏ → lý do |
-| 0.3 | Test trên iPhone thật (Safari) — glass, sticky, slider, safe-area | M | `-webkit-backdrop-filter` có rồi nhưng chưa verify máy thật |
+| 0.3 | Test trên iPhone thật (Safari) — glass, sticky, slider, safe-area | M | ✅ ĐÃ TEST GIẢ LẬP (06/07, bản live v11): viewport 390×844 mobile+touch, CPU throttle 4x — **26/26 bước flow pass, 0 lỗi console, trace scroll không có long-task/jank**. CLS 0.23 chỉ từ animation entrance khi chuyển screen bằng script (không phải lỗi thật). CÒN LẠI: Safari iPhone máy thật (refraction tự tắt trên Safari by design, blur -webkit- có đủ) |
 
 **Nguyên tắc:** P1–P3 chỉ chạy sau khi P0.2 chốt scope. Feedback CEO có thể xoá/đổi hạng mục bên dưới.
 
