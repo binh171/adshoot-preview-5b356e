@@ -232,6 +232,7 @@
   .catrow::-webkit-scrollbar{display:none}
   .catchip{flex:none; display:flex; align-items:center; gap:7px; padding:9px 16px; border-radius:999px; background:var(--card); border:none; font-size:13.5px; font-weight:600; color:var(--ink2); cursor:pointer; white-space:nowrap; transition:transform .15s, box-shadow .2s, background .2s; box-shadow:0 1px 3px rgba(0,0,0,.07)}
   .catchip:active{transform:scale(.97)}
+  .catchip svg,.apchip svg{width:15px; height:15px; stroke:currentColor; fill:none; stroke-width:1.9; flex:none}
   .catchip.on{background:var(--em); color:#fff; box-shadow:0 4px 13px rgba(14,92,67,.3)}
   /* section header (title + chevron, left-aligned like Pixelcut) */
   .sec-h{display:flex; align-items:center; gap:7px; padding:24px 24px 11px}
@@ -1076,10 +1077,10 @@
         <!-- category chips (top-level filters) -->
         <div class="catrow">
           <div class="catchip on" onclick="filterTools('all',this)">All</div>
-          <div class="catchip" onclick="filterTools('listing',this)">🏷 Listing</div>
-          <div class="catchip" onclick="filterTools('social',this)">♡ Social</div>
-          <div class="catchip" onclick="filterTools('marketing',this)">◫ Marketing</div>
-          <div class="catchip" onclick="filterTools('edit',this)">✎ Edit</div>
+          <div class="catchip" onclick="filterTools('listing',this)"><svg viewBox="0 0 24 24"><path d="M20.6 13.4L11 3.8H4v7l9.6 9.6a2 2 0 0 0 2.8 0l4.2-4.2a2 2 0 0 0 0-2.8z"/><circle cx="7.5" cy="7.5" r="1.3"/></svg>Listing</div>
+          <div class="catchip" onclick="filterTools('social',this)"><svg viewBox="0 0 24 24"><path d="M12 21s-7.6-4.9-9.5-9.2A5.3 5.3 0 0 1 12 6.6a5.3 5.3 0 0 1 9.5 5.2C19.6 16.1 12 21 12 21z"/></svg>Social</div>
+          <div class="catchip" onclick="filterTools('marketing',this)"><svg viewBox="0 0 24 24"><path d="M3 10v4l4 1 7 4V5L7 9l-4 1z"/><path d="M17.5 9a4.5 4.5 0 0 1 0 6"/></svg>Marketing</div>
+          <div class="catchip" onclick="filterTools('edit',this)"><svg viewBox="0 0 24 24"><path d="M14.5 3.5l6 6M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19l-4 1z"/></svg>Edit</div>
         </div>
 
         <!-- ░░ POPULAR TOOLS · 2×2 (label + sample image) ░░ -->
@@ -1248,9 +1249,9 @@
           <span class="chipc">◆ 40</span>
         </div>
         <div class="ap-chips">
-          <div class="apchip on">▦ All</div>
-          <div class="apchip">🏷 Listing</div>
-          <div class="apchip">✎ Edit</div>
+          <div class="apchip on"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg>All</div>
+          <div class="apchip"><svg viewBox="0 0 24 24"><path d="M20.6 13.4L11 3.8H4v7l9.6 9.6a2 2 0 0 0 2.8 0l4.2-4.2a2 2 0 0 0 0-2.8z"/><circle cx="7.5" cy="7.5" r="1.3"/></svg>Listing</div>
+          <div class="apchip"><svg viewBox="0 0 24 24"><path d="M14.5 3.5l6 6M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19l-4 1z"/></svg>Edit</div>
         </div>
 
         <!-- AI suggested (top picks for this photo) -->

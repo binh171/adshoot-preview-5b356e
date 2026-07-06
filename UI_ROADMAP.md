@@ -9,6 +9,7 @@
 - **v2**: palette iOS (bỏ giấy be), serif → chỉ logo, capsule buttons, floating glass tab bar + minimize-on-scroll
 - **v3**: quét sạch màu be hardcode, glass-chip/badge system, active đen→green, sticky glass header + large-title shrink, **AdVideo dark mode** + hero tràn mép + feed card 210px, **Editor full-bleed** + toolbar/dock kính + Done, Product card 4:5 tên đè gradient, gen sheet = bottom sheet + nút Generate gradient AI + shimmer sweep, paywall timeline Today/Day5/Day7, Apply row "✦ Suggested"
 - **v4**: before/after drag slider (Store), search island kính cạnh tab bar, dark contrast fixes
+- **v5**: chip lọc Store + Apply — ký tự text 🏷♡◫✎ → SVG stroke icon đồng bộ tab bar (feedback trực tiếp từ user)
 
 ---
 
