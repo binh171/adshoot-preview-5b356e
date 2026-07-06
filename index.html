@@ -10,14 +10,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    /* iOS 26 skin: systemGroupedBackground + white cards; green kept as brand accent */
-    --paper:#F2F2F7; --paper2:#FFFFFF; --card:#FFFFFF;
-    --ink:#000000; --ink2:#3A3A3C; --muted:#8E8E93; --line:#E5E5EA;
-    --em:#0E5C43; --em-d:#0A4632; --em-soft:#E5EEEA; --gold:#9A7B3F;
+    /* iOS 26 skin — UNIFIED DARK theme (CEO: 1 tab dark lẻ = thiếu đồng nhất) */
+    --paper:#0D0F0E; --paper2:#17191B; --card:#1C1C1E;
+    --ink:#FFFFFF; --ink2:#D6D6DB; --muted:#8E8E93; --line:#2C2C2E;
+    --em:#0E5C43; --em-d:#2E8B69; --em-soft:rgba(46,196,148,.14); --gold:#C9A254;
     --sans:'Plus Jakarta Sans',-apple-system,system-ui,sans-serif;
     --serif:var(--sans); /* UI text = sans; true serif pinned on brand classes below */
     --brandserif:'Fraunces',Georgia,serif;
-    --glass:rgba(255,255,255,.62);
+    --glass:rgba(28,28,30,.6);
     --ai:linear-gradient(135deg,#0E5C43,#2EC494);
     --ease:cubic-bezier(.2,.85,.25,1);
   }
@@ -686,8 +686,10 @@
   /* ============ V3: sticky glass headers (large-title behavior) ============ */
   .stop,.prhd,.pdtop,.ap-top{position:sticky; top:0; z-index:25; transition:background .25s, box-shadow .25s}
   .screen.scrolled .stop,.screen.scrolled .prhd,.screen.scrolled .pdtop,.screen.scrolled .ap-top{
-    background:rgba(242,242,247,.72); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%);
-    box-shadow:0 1px 0 rgba(0,0,0,.07)}
+    background:rgba(16,18,17,.72); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%);
+    box-shadow:0 1px 0 rgba(255,255,255,.07)}
+
+  /* (V8 dark adjustments moved to end of stylesheet so they win the cascade) */
 
   /* ============ V3: AdVideo dark mode ============ */
   .screen[data-s="advideo"]{background:#0D0F0E}
@@ -736,6 +738,8 @@
   #gen::before{content:''; position:absolute; top:8px; left:50%; transform:translateX(-50%); width:36px; height:5px; border-radius:3px; background:rgba(0,0,0,.18); z-index:9}
   .gtop{padding:20px 20px 10px}
   .gx{background:rgba(118,118,128,.12); border:none}
+
+  /* (V8 dark block moved to bottom of stylesheet) */
 
   @media (prefers-reduced-motion:reduce){ .orbit,.timg,.whero img,.heroc,.heroc::after,.hs-ring,.storefab,.genBtn,.gpvis::after,.hicard.live .m,.hglow,.hscan::before,.hpulse,.hspark i{animation:none!important} .acaps .eyebrow,.acaps .title,.acaps .sub{transition-duration:.01ms!important} .prgrid.revealp .prcard{animation:none; opacity:1; transform:none} }
 
@@ -1055,6 +1059,41 @@
   .toolc .tl{font-size:11px; font-weight:600; color:var(--ink2); line-height:1.15}
   .toolc.hide{display:none}
   .screen[data-s="store"] .hide{display:none!important}
+  /* ============ V8: unified dark theme adjustments (last = wins cascade) ============ */
+  .ptool{background:var(--card); border:1px solid rgba(255,255,255,.06)}
+  .nav{border:1px solid rgba(255,255,255,.14); box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 8px 32px rgba(0,0,0,.5)}
+  .nav button.on{color:#7FD4B3; background:rgba(46,196,148,.12)}
+  .nav button.on svg rect,.nav button.on svg circle{fill:rgba(46,196,148,.16)}
+  .chipc,.shbtn{background:rgba(44,44,46,.72); border:1px solid rgba(255,255,255,.1); box-shadow:none}
+  .chipc{color:#7FD4B3}
+  .shbtn svg{stroke:var(--ink2)}
+  .pdbtn.sec{background:rgba(44,44,46,.72); border:1px solid rgba(255,255,255,.1); box-shadow:none; color:var(--ink)}
+  .pdbtn.sec svg{stroke:var(--ink)}
+  .sec-h .more,.asec .more{color:#7FD4B3; background:rgba(255,255,255,.08)}
+  .gx{background:rgba(255,255,255,.08); border:none; color:var(--ink)}
+  .gnudge{background:#26210F; border-color:#4A3D1A; border-left-color:#C9A254; color:#E8C86A}
+  #gen::before,.ssheet::before{background:rgba(255,255,255,.25)}
+  .gpro{background:var(--card); border-color:#4A3D1A}
+  .prolock{background:#3A3012; border-color:#4A3D1A; color:#E8C86A}
+  .gpvis{background:linear-gradient(160deg,#1F2124,#26282C)}
+  .gpvis::after{background:linear-gradient(105deg,transparent,rgba(255,255,255,.14) 50%,transparent)}
+  .prcard,.prcont,.ctx,.pcard,.catchip,.scenecard .si{border:1px solid rgba(255,255,255,.06)}
+  .prthumb,.pdcell{background:#1F2124}
+  .pdsring{background:conic-gradient(#2EC494 68%, rgba(255,255,255,.12) 0)}
+  .ed-frame{box-shadow:0 26px 64px rgba(0,0,0,.7)}
+  /* content tiles stay bright — product photos live on white */
+  .scenecard.fmt .si,.gslot,.fmtc .fp,.grhk .b,.rszc .rp,.toolc .ic{background:#fff}
+  .toolc .ic{border:none; box-shadow:0 2px 10px rgba(0,0,0,.35)}
+  /* white-background buttons keep deep-green text (em-d is lighter on dark theme) */
+  .aact .cta,.pw-cta,.hcta,.pvcta{color:#0A4632}
+  .aact .cta svg,.pw-cta svg,.hcta svg,.pvcta svg{stroke:#0A4632}
+  .fplay{color:#0A4632}
+  .as-tg{color:#7FD4B3}
+  /* welcome scrim: cream literals -> dark */
+  .wscrim{background:radial-gradient(64% 40% at 50% 47%, var(--paper) 36%, rgba(13,15,14,.74) 62%, rgba(13,15,14,.18) 100%)}
+  .welcome:not(.orbit-on) .wscrim{background:linear-gradient(180deg,rgba(13,15,14,.1),rgba(13,15,14,.55) 52%,var(--paper) 88%)}
+  /* store section sub-captions (fill sparse sections) */
+  .sec-sub{padding:0 24px 10px; margin-top:-8px; font-size:11.5px; font-weight:600; color:var(--muted)}
 </style>
 </head>
 <body>
@@ -1142,6 +1181,7 @@
 
         <!-- ░░ POPULAR TOOLS · 2×2 (label + sample image) ░░ -->
         <div class="sec-h" data-grp="popular"><h3>Popular tools <span class="chev">›</span></h3></div>
+        <div class="sec-sub" data-grp="popular">One-tap AI fixes for your product shots</div>
         <div class="ptools" data-grp="popular">
           <div class="ptool" data-cat="listing social marketing" onclick="toast('Remove background (demo)')"><b>Remove<br>background</b><img src="store/product_perfume/04_lifestyle.jpg" alt=""></div>
           <div class="ptool" data-cat="listing social" onclick="toast('Resize (demo)')"><b>Resize</b><img src="store/product_tote_v2/05_lifestyle.jpg" alt=""></div>
@@ -1149,17 +1189,10 @@
           <div class="ptool" data-cat="listing social marketing" onclick="toast('Upscale (demo)')"><b>Upscale</b><img src="store/product_candle/04_lifestyle.jpg" alt=""></div>
         </div>
 
-        <!-- ░░ BEFORE / AFTER · drag-to-compare ░░ -->
-        <div class="sec-h"><h3>See the difference</h3></div>
-        <div class="ba" id="baCard">
-          <img class="ba-after" src="store/_card/dress_feat.jpg" alt="">
-          <div class="ba-beforewrap"><img class="ba-before" src="store/_card/dress_raw.jpg" alt=""></div>
-          <div class="ba-divider"><div class="ba-knob">⇔</div></div>
-          <span class="ba-tag l">Before</span><span class="ba-tag r">✦ After</span>
-        </div>
 
         <!-- ░░ ALL TOOLS · full kit, filtered by the chips above ░░ -->
         <div class="sec-h" data-grp="alltools"><h3>All tools <span class="chev">›</span></h3><span class="more" onclick="toast('See all tools (demo)')">See all</span></div>
+        <div class="sec-sub" data-grp="alltools">The full kit — background, retouch, resize &amp; more</div>
         <div class="toolgrid" id="toolGrid" data-grp="alltools"></div>
 
         <!-- ░░ STORE HERO CARD · 5-beat real-asset showcase ░░ -->
@@ -1241,6 +1274,7 @@
 
         <!-- ░░ MARKETPLACE FORMATS · format cards (badge + dimensions) ░░ -->
         <div class="sec-h" data-grp="formats"><h3>Marketplace formats <span class="chev">›</span></h3><span class="more" onclick="toast('See all formats (demo)')">See all</span></div>
+        <div class="sec-sub" data-grp="formats">Auto-sized &amp; compliant for every storefront</div>
         <div class="scene-row" data-grp="formats">
           <div class="scenecard fmt" data-cat="listing" onclick="toast('Shopify square (demo)')"><div class="si"><img src="store/product_jewelry/01_white.png" alt=""><span class="mk" style="background:#95BF47">S</span></div><div class="sl">Shopify square</div><div class="sd">2048 × 2048</div></div>
           <div class="scenecard fmt" data-cat="listing" onclick="toast('Amazon main (demo)')"><div class="si"><img src="store/product_tote_v2/01_white.jpg" alt=""><span class="mk" style="background:#FF9900">a</span></div><div class="sl">Amazon main</div><div class="sd">2000 × 2000</div></div>
@@ -1250,6 +1284,7 @@
 
         <!-- ░░ SHOPIFY TEMPLATES · scene templates (1 product × N scene) ░░ -->
         <div class="sec-h" data-grp="templates"><h3>Shopify templates <span class="chev">›</span></h3><span class="more" onclick="toast('See all scenes (demo)')">See all</span></div>
+        <div class="sec-sub" data-grp="templates">Scored looks — tap to apply to your product</div>
         <div class="scene-row" data-grp="templates">
           <div class="scenecard" data-cat="listing social" onclick="toast('Apply: On-model (demo)')"><div class="si"><img src="store/_aha_onmodel/onmodel_pose.png" alt=""><span class="sb">✓ 95</span></div><div class="sl">On-model</div><div class="sd">worn, editorial</div></div>
           <div class="scenecard" data-cat="listing" onclick="toast('Apply: Studio hero (demo)')"><div class="si"><img src="store/_aha_onmodel/_frames/f_start.jpg" alt=""><span class="sb">✓ 95</span></div><div class="sl">Studio hero</div><div class="sd">clean e-commerce</div></div>
@@ -2333,14 +2368,6 @@
   }
   document.querySelectorAll('.scroll,.body').forEach(watch);
   document.querySelectorAll('.nav button').forEach(function(b){ b.addEventListener('click', function(){ phone.classList.remove('navmin'); }); });
-
-  /* before/after drag-to-compare */
-  var ba=document.getElementById('baCard');
-  if(ba){
-    var setX=function(cx){ var r=ba.getBoundingClientRect(); var p=Math.max(6, Math.min(94, (cx-r.left)/r.width*100)); ba.style.setProperty('--x', p+'%'); };
-    ba.addEventListener('pointerdown', function(e){ ba.setPointerCapture(e.pointerId); setX(e.clientX); });
-    ba.addEventListener('pointermove', function(e){ if(e.buttons) setX(e.clientX); });
-  }
 
   /* search sheet (island) */
   window.toggleSearch=function(on){
