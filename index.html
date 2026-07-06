@@ -607,6 +607,28 @@
   .pdscore .t span{font-size:10.5px; color:var(--muted); display:block; margin-top:3px; line-height:1.4}
   .pdscore .up{font-size:10.5px; font-weight:800; background:var(--gold); color:#fff; padding:7px 14px; border-radius:999px; white-space:nowrap; flex:none}
 
+  /* ============ V4: before/after drag slider ============ */
+  .ba{position:relative; margin:2px 22px; height:236px; border-radius:16px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.08); touch-action:none; cursor:ew-resize; --x:50%}
+  .ba img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; pointer-events:none}
+  .ba-beforewrap{position:absolute; inset:0; clip-path:inset(0 calc(100% - var(--x)) 0 0); z-index:2}
+  .ba-divider{position:absolute; top:0; bottom:0; left:var(--x); width:2.5px; margin-left:-1px; background:#fff; z-index:3; box-shadow:0 0 12px rgba(0,0,0,.35)}
+  .ba-knob{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:38px; height:38px; border-radius:50%;
+    background:rgba(255,255,255,.85); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,.6);
+    box-shadow:0 4px 14px rgba(0,0,0,.3); display:grid; place-items:center; font-size:15px; color:var(--ink2)}
+  .ba-tag{position:absolute; top:10px; z-index:4; font-size:10px; font-weight:800; padding:5px 11px; border-radius:999px; color:#fff;
+    background:rgba(28,28,30,.45); backdrop-filter:blur(8px) saturate(160%); border:1px solid rgba(255,255,255,.25); pointer-events:none}
+  .ba-tag.l{left:10px} .ba-tag.r{right:10px; background:rgba(14,92,67,.6)}
+
+  /* ============ V4: search island (iOS 26) — Store only ============ */
+  .sisl{position:absolute; right:16px; bottom:16px; z-index:16; width:54px; height:54px; border-radius:50%; border:1px solid rgba(255,255,255,.55); cursor:pointer;
+    display:grid; place-items:center; background:var(--glass);
+    backdrop-filter:blur(24px) saturate(180%); -webkit-backdrop-filter:blur(24px) saturate(180%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.65), 0 8px 32px rgba(0,0,0,.16)}
+  .sisl:active{transform:scale(.94)}
+  .sisl svg{width:22px; height:22px; stroke:var(--ink2); fill:none; stroke-width:2}
+  .screen[data-s="store"] .nav{left:16px; right:84px; transform:none; width:auto}
+  .phone.navmin .screen[data-s="store"] .nav{width:auto}
+
   /* ============ V3: sticky glass headers (large-title behavior) ============ */
   .stop,.prhd,.pdtop,.ap-top{position:sticky; top:0; z-index:25; transition:background .25s, box-shadow .25s}
   .screen.scrolled .stop,.screen.scrolled .prhd,.screen.scrolled .pdtop,.screen.scrolled .ap-top{
@@ -629,6 +651,8 @@
   .screen[data-s="advideo"] .ctxitem .ci b{color:#fff}
   .screen[data-s="advideo"] .asec .sx h3{color:#fff}
   .screen[data-s="advideo"] .asec .sx p{color:#98989F}
+  .screen[data-s="advideo"] .asec .sx h3 .tr{background:rgba(255,255,255,.1); color:#7FD4B3; border-color:transparent}
+  .screen[data-s="advideo"] .bl-ico circle:first-of-type{stroke:#2EC494}
   .screen[data-s="advideo"] .asec .more{color:#7FD4B3; background:rgba(255,255,255,.08)}
   .screen[data-s="advideo"] .fname{color:#fff}
   .screen[data-s="advideo"] .fdesc{color:#98989F}
@@ -1049,12 +1073,6 @@
           <div class="tools"><span class="chipc">◆ 40</span></div>
         </div>
 
-        <!-- search (Pixelcut-style) -->
-        <div class="ssearch" onclick="toast('Search templates, tools, designs (demo)')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
-          <span>Search templates, tools, designs…</span>
-        </div>
-
         <!-- category chips (top-level filters) -->
         <div class="catrow">
           <div class="catchip on" onclick="filterTools('all',this)">All</div>
@@ -1071,6 +1089,15 @@
           <div class="ptool" data-cat="listing social" onclick="toast('Resize (demo)')"><b>Resize</b><img src="store/product_tote_v2/05_lifestyle.jpg" alt=""></div>
           <div class="ptool" data-cat="listing social marketing" onclick="toast('Retouch (demo)')"><b>Retouch</b><img src="store/product_jewelry/04_model_ed.png" alt=""></div>
           <div class="ptool" data-cat="listing social marketing" onclick="toast('Upscale (demo)')"><b>Upscale</b><img src="store/product_candle/04_lifestyle.jpg" alt=""></div>
+        </div>
+
+        <!-- ░░ BEFORE / AFTER · drag-to-compare ░░ -->
+        <div class="sec-h"><h3>See the difference</h3></div>
+        <div class="ba" id="baCard">
+          <img class="ba-after" src="store/_card/dress_feat.jpg" alt="">
+          <div class="ba-beforewrap"><img class="ba-before" src="store/_card/dress_raw.jpg" alt=""></div>
+          <div class="ba-divider"><div class="ba-knob">⇔</div></div>
+          <span class="ba-tag l">Before</span><span class="ba-tag r">✦ After</span>
         </div>
 
         <!-- ░░ ALL TOOLS · full kit, filtered by the chips above ░░ -->
@@ -1175,6 +1202,7 @@
 
       <!-- floating create/edit CTA (follows the screen) -->
       <button class="storefab" onclick="openPick()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 3.5l6 6M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19l-4 1z"/></svg>Create &amp; edit</button>
+      <button class="sisl" onclick="toast('Search templates, tools, designs (demo)')" title="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></button>
 
       <!-- bottom nav (3 tabs) -->
       <div class="nav">
@@ -2218,6 +2246,14 @@
   }
   document.querySelectorAll('.scroll,.body').forEach(watch);
   document.querySelectorAll('.nav button').forEach(function(b){ b.addEventListener('click', function(){ phone.classList.remove('navmin'); }); });
+
+  /* before/after drag-to-compare */
+  var ba=document.getElementById('baCard');
+  if(ba){
+    var setX=function(cx){ var r=ba.getBoundingClientRect(); var p=Math.max(6, Math.min(94, (cx-r.left)/r.width*100)); ba.style.setProperty('--x', p+'%'); };
+    ba.addEventListener('pointerdown', function(e){ ba.setPointerCapture(e.pointerId); setX(e.clientX); });
+    ba.addEventListener('pointermove', function(e){ if(e.buttons) setX(e.clientX); });
+  }
 })();
 </script>
 
