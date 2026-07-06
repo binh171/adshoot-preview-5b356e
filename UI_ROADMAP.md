@@ -14,6 +14,7 @@
 
 - **v7 (feedback user)**: All tools bỏ hộp-lồng-hộp → icon squircle trắng 60px trên nền, 4 cột × 2 hàng; search island bỏ khỏi khu tab bar → nút tròn glass trên header Store (cạnh ◆40), tab bar về giữa
 
+- **v9 (feedback user — CEO không ưng dark)**: **theme toggle ☾ trên header Store, MẶC ĐỊNH LIGHT**, dark = opt-in class `.phone.dark` (var swap + toàn bộ override scoped), nhớ lựa chọn localStorage; AdVideo theo theme chung; Editor/Picker giữ dark cố định (chuẩn editor)
 - **v8 (feedback user — đồng nhất)**: **DARK MODE TOÀN APP** (P3.1 — swap :root vars + block override cuối stylesheet; content tiles/product photos giữ nền trắng; nút nền trắng giữ chữ green đậm #0A4632); **bỏ card "See the difference"**; thêm sub-caption 4 section Store lấp khoảng trống. Bài học cascade: override theme PHẢI nằm cuối stylesheet.
 
 > P1 ✅ xong · P2 ✅ xong · P3 xong 3.1+3.3 (còn 3.2 perf audit, 3.5 tokens doc) · P0.2/P0.3 chờ CEO + iPhone · Deck compare.html chụp bản LIGHT cũ — cần chụp lại sau khi CEO chốt dark

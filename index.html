@@ -10,16 +10,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    /* iOS 26 skin — UNIFIED DARK theme (CEO: 1 tab dark lẻ = thiếu đồng nhất) */
-    --paper:#0D0F0E; --paper2:#17191B; --card:#1C1C1E;
-    --ink:#FFFFFF; --ink2:#D6D6DB; --muted:#8E8E93; --line:#2C2C2E;
-    --em:#0E5C43; --em-d:#2E8B69; --em-soft:rgba(46,196,148,.14); --gold:#C9A254;
+    /* iOS 26 skin — LIGHT default; .phone.dark switches the whole set */
+    --paper:#F2F2F7; --paper2:#FFFFFF; --card:#FFFFFF;
+    --ink:#000000; --ink2:#3A3A3C; --muted:#8E8E93; --line:#E5E5EA;
+    --em:#0E5C43; --em-d:#0A4632; --em-soft:#E5EEEA; --gold:#9A7B3F;
     --sans:'Plus Jakarta Sans',-apple-system,system-ui,sans-serif;
     --serif:var(--sans); /* UI text = sans; true serif pinned on brand classes below */
     --brandserif:'Fraunces',Georgia,serif;
-    --glass:rgba(28,28,30,.6);
+    --glass:rgba(255,255,255,.62);
     --ai:linear-gradient(135deg,#0E5C43,#2EC494);
     --ease:cubic-bezier(.2,.85,.25,1);
+  }
+  .phone.dark{
+    --paper:#0D0F0E; --paper2:#17191B; --card:#1C1C1E;
+    --ink:#FFFFFF; --ink2:#D6D6DB; --line:#2C2C2E;
+    --em-d:#2E8B69; --em-soft:rgba(46,196,148,.14); --gold:#C9A254;
+    --glass:rgba(28,28,30,.6);
   }
   /* brand logo / watermark keep the serif identity */
   .hbrand,.abrand,.wcore h1,.as-mk,.as-tg,.wbrand-wm,.brandlock .bl-wm{font-family:var(--brandserif)}
@@ -66,8 +72,8 @@
   .timg{display:block; border-radius:18px; background-size:cover; background-position:center;
     box-shadow:0 16px 34px rgba(26,24,20,.18); animation:orbrev 46s linear infinite}
   .wscrim{position:absolute; inset:0; pointer-events:none;
-    background:radial-gradient(64% 40% at 50% 47%, var(--paper) 36%, rgba(246,242,234,.74) 62%, rgba(246,242,234,.18) 100%)}
-  .welcome:not(.orbit-on) .wscrim{background:linear-gradient(180deg,rgba(246,242,234,.1),rgba(246,242,234,.55) 52%,var(--paper) 88%)}
+    background:radial-gradient(64% 40% at 50% 47%, var(--paper) 36%, rgba(242,242,247,.74) 62%, rgba(242,242,247,.18) 100%)}
+  .welcome:not(.orbit-on) .wscrim{background:linear-gradient(180deg,rgba(242,242,247,.1),rgba(242,242,247,.55) 52%,var(--paper) 88%)}
   .wcore{position:absolute; inset:0; z-index:4; display:flex; flex-direction:column; justify-content:center; text-align:center; padding:0 30px}
   .wcore h1{font-family:var(--serif); font-weight:500; font-size:46px; line-height:.96; letter-spacing:-.9px; color:var(--ink); margin:13px 0 15px}
   .wcore h1 i{font-style:italic; color:var(--em)}
@@ -686,35 +692,38 @@
   /* ============ V3: sticky glass headers (large-title behavior) ============ */
   .stop,.prhd,.pdtop,.ap-top{position:sticky; top:0; z-index:25; transition:background .25s, box-shadow .25s}
   .screen.scrolled .stop,.screen.scrolled .prhd,.screen.scrolled .pdtop,.screen.scrolled .ap-top{
-    background:rgba(16,18,17,.72); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%);
-    box-shadow:0 1px 0 rgba(255,255,255,.07)}
+    background:rgba(242,242,247,.72); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%);
+    box-shadow:0 1px 0 rgba(0,0,0,.07)}
+  .phone.dark .screen.scrolled .stop,.phone.dark .screen.scrolled .prhd,.phone.dark .screen.scrolled .pdtop,.phone.dark .screen.scrolled .ap-top{
+    background:rgba(16,18,17,.72); box-shadow:0 1px 0 rgba(255,255,255,.07)}
 
   /* (V8 dark adjustments moved to end of stylesheet so they win the cascade) */
 
   /* ============ V3: AdVideo dark mode ============ */
-  .screen[data-s="advideo"]{background:#0D0F0E}
-  .screen[data-s="advideo"] .bl-wm{color:#fff}
-  .screen[data-s="advideo"] .chipc{background:rgba(255,255,255,.12); color:#7FD4B3; border-color:rgba(255,255,255,.14); box-shadow:none}
-  .screen[data-s="advideo"] .ctx{background:#1C1C1E; border:none}
-  .screen[data-s="advideo"] .ctx .cx small{color:#8E8E93}
-  .screen[data-s="advideo"] .ctx .cx b{color:#fff}
-  .screen[data-s="advideo"] .ctx .th{border-color:rgba(255,255,255,.12)}
-  .screen[data-s="advideo"] .ctxpick{background:rgba(255,255,255,.1); color:#7FD4B3; border:none}
-  .screen[data-s="advideo"] .ctxpick svg{stroke:#7FD4B3}
-  .screen[data-s="advideo"] .ctxdrop{background:#1C1C1E; border-color:rgba(255,255,255,.1)}
-  .screen[data-s="advideo"] .ctxitem{border-color:rgba(255,255,255,.08)}
-  .screen[data-s="advideo"] .ctxitem:hover{background:#26262A}
-  .screen[data-s="advideo"] .ctxitem .ci b{color:#fff}
-  .screen[data-s="advideo"] .asec .sx h3{color:#fff}
-  .screen[data-s="advideo"] .asec .sx p{color:#98989F}
-  .screen[data-s="advideo"] .asec .sx h3 .tr{background:rgba(255,255,255,.1); color:#7FD4B3; border-color:transparent}
-  .screen[data-s="advideo"] .bl-ico circle:first-of-type{stroke:#2EC494}
+  .phone.dark .screen[data-s="advideo"]{background:#0D0F0E}
+  .phone.dark .screen[data-s="advideo"] .bl-wm{color:#fff}
+  .phone.dark .screen[data-s="advideo"] .chipc{background:rgba(255,255,255,.12); color:#7FD4B3; border-color:rgba(255,255,255,.14); box-shadow:none}
+  .phone.dark .screen[data-s="advideo"] .ctx{background:#1C1C1E; border:none}
+  .phone.dark .screen[data-s="advideo"] .ctx .cx small{color:#8E8E93}
+  .phone.dark .screen[data-s="advideo"] .ctx .cx b{color:#fff}
+  .phone.dark .screen[data-s="advideo"] .ctx .th{border-color:rgba(255,255,255,.12)}
+  .phone.dark .screen[data-s="advideo"] .ctxpick{background:rgba(255,255,255,.1); color:#7FD4B3; border:none}
+  .phone.dark .screen[data-s="advideo"] .ctxpick svg{stroke:#7FD4B3}
+  .phone.dark .screen[data-s="advideo"] .ctxdrop{background:#1C1C1E; border-color:rgba(255,255,255,.1)}
+  .phone.dark .screen[data-s="advideo"] .ctxitem{border-color:rgba(255,255,255,.08)}
+  .phone.dark .screen[data-s="advideo"] .ctxitem:hover{background:#26262A}
+  .phone.dark .screen[data-s="advideo"] .ctxitem .ci b{color:#fff}
+  .phone.dark .screen[data-s="advideo"] .asec .sx h3{color:#fff}
+  .phone.dark .screen[data-s="advideo"] .asec .sx p{color:#98989F}
+  .phone.dark .screen[data-s="advideo"] .asec .sx h3 .tr{background:rgba(255,255,255,.1); color:#7FD4B3; border-color:transparent}
+  .phone.dark .screen[data-s="advideo"] .bl-ico circle:first-of-type{stroke:#2EC494}
   .screen[data-s="advideo"] .asec .more{color:#7FD4B3; background:rgba(255,255,255,.08)}
-  .screen[data-s="advideo"] .fname{color:#fff}
-  .screen[data-s="advideo"] .fdesc{color:#98989F}
-  .screen[data-s="advideo"] .hicard{border:none; background:#1C1C1E; box-shadow:0 12px 26px rgba(0,0,0,.4); width:210px}
-  .screen[data-s="advideo"] .fprev{border:none; background:#1C1C1E; box-shadow:0 8px 18px rgba(0,0,0,.35)}
-  .screen[data-s="advideo"].scrolled .stop{background:rgba(13,15,14,.72); box-shadow:0 1px 0 rgba(255,255,255,.07)}
+  .phone.dark .screen[data-s="advideo"] .fname{color:#fff}
+  .phone.dark .screen[data-s="advideo"] .fdesc{color:#98989F}
+  .screen[data-s="advideo"] .hicard{width:210px}
+  .phone.dark .screen[data-s="advideo"] .hicard{border:none; background:#1C1C1E; box-shadow:0 12px 26px rgba(0,0,0,.4)}
+  .phone.dark .screen[data-s="advideo"] .fprev{border:none; background:#1C1C1E; box-shadow:0 8px 18px rgba(0,0,0,.35)}
+  .phone.dark .screen[data-s="advideo"].scrolled .stop{background:rgba(13,15,14,.72); box-shadow:0 1px 0 rgba(255,255,255,.07)}
   .screen[data-s="advideo"] .herocard{margin:12px 0 4px; border-radius:0}
 
   /* ============ V3: Editor — full-bleed canvas + floating glass bars ============ */
@@ -1060,38 +1069,38 @@
   .toolc.hide{display:none}
   .screen[data-s="store"] .hide{display:none!important}
   /* ============ V8: unified dark theme adjustments (last = wins cascade) ============ */
-  .ptool{background:var(--card); border:1px solid rgba(255,255,255,.06)}
-  .nav{border:1px solid rgba(255,255,255,.14); box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 8px 32px rgba(0,0,0,.5)}
-  .nav button.on{color:#7FD4B3; background:rgba(46,196,148,.12)}
-  .nav button.on svg rect,.nav button.on svg circle{fill:rgba(46,196,148,.16)}
-  .chipc,.shbtn{background:rgba(44,44,46,.72); border:1px solid rgba(255,255,255,.1); box-shadow:none}
-  .chipc{color:#7FD4B3}
-  .shbtn svg{stroke:var(--ink2)}
-  .pdbtn.sec{background:rgba(44,44,46,.72); border:1px solid rgba(255,255,255,.1); box-shadow:none; color:var(--ink)}
-  .pdbtn.sec svg{stroke:var(--ink)}
-  .sec-h .more,.asec .more{color:#7FD4B3; background:rgba(255,255,255,.08)}
-  .gx{background:rgba(255,255,255,.08); border:none; color:var(--ink)}
-  .gnudge{background:#26210F; border-color:#4A3D1A; border-left-color:#C9A254; color:#E8C86A}
-  #gen::before,.ssheet::before{background:rgba(255,255,255,.25)}
-  .gpro{background:var(--card); border-color:#4A3D1A}
-  .prolock{background:#3A3012; border-color:#4A3D1A; color:#E8C86A}
-  .gpvis{background:linear-gradient(160deg,#1F2124,#26282C)}
-  .gpvis::after{background:linear-gradient(105deg,transparent,rgba(255,255,255,.14) 50%,transparent)}
-  .prcard,.prcont,.ctx,.pcard,.catchip,.scenecard .si{border:1px solid rgba(255,255,255,.06)}
-  .prthumb,.pdcell{background:#1F2124}
-  .pdsring{background:conic-gradient(#2EC494 68%, rgba(255,255,255,.12) 0)}
-  .ed-frame{box-shadow:0 26px 64px rgba(0,0,0,.7)}
+  .phone.dark .ptool{background:var(--card); border:1px solid rgba(255,255,255,.06)}
+  .phone.dark .nav{border:1px solid rgba(255,255,255,.14); box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 8px 32px rgba(0,0,0,.5)}
+  .phone.dark .nav button.on{color:#7FD4B3; background:rgba(46,196,148,.12)}
+  .phone.dark .nav button.on svg rect,.phone.dark .nav button.on svg circle{fill:rgba(46,196,148,.16)}
+  .phone.dark .chipc,.phone.dark .shbtn{background:rgba(44,44,46,.72); border:1px solid rgba(255,255,255,.1); box-shadow:none}
+  .phone.dark .chipc{color:#7FD4B3}
+  .phone.dark .shbtn svg{stroke:var(--ink2)}
+  .phone.dark .pdbtn.sec{background:rgba(44,44,46,.72); border:1px solid rgba(255,255,255,.1); box-shadow:none; color:var(--ink)}
+  .phone.dark .pdbtn.sec svg{stroke:var(--ink)}
+  .phone.dark .sec-h .more,.phone.dark .asec .more{color:#7FD4B3; background:rgba(255,255,255,.08)}
+  .phone.dark .gx{background:rgba(255,255,255,.08); border:none; color:var(--ink)}
+  .phone.dark .gnudge{background:#26210F; border-color:#4A3D1A; border-left-color:#C9A254; color:#E8C86A}
+  .phone.dark #gen::before,.phone.dark .ssheet::before{background:rgba(255,255,255,.25)}
+  .phone.dark .gpro{background:var(--card); border-color:#4A3D1A}
+  .phone.dark .prolock{background:#3A3012; border-color:#4A3D1A; color:#E8C86A}
+  .phone.dark .gpvis{background:linear-gradient(160deg,#1F2124,#26282C)}
+  .phone.dark .gpvis::after{background:linear-gradient(105deg,transparent,rgba(255,255,255,.14) 50%,transparent)}
+  .phone.dark .prcard,.phone.dark .prcont,.phone.dark .ctx,.phone.dark .pcard,.phone.dark .catchip,.phone.dark .scenecard .si{border:1px solid rgba(255,255,255,.06)}
+  .phone.dark .prthumb,.phone.dark .pdcell{background:#1F2124}
+  .phone.dark .pdsring{background:conic-gradient(#2EC494 68%, rgba(255,255,255,.12) 0)}
+  .phone.dark .ed-frame{box-shadow:0 26px 64px rgba(0,0,0,.7)}
   /* content tiles stay bright — product photos live on white */
   .scenecard.fmt .si,.gslot,.fmtc .fp,.grhk .b,.rszc .rp,.toolc .ic{background:#fff}
-  .toolc .ic{border:none; box-shadow:0 2px 10px rgba(0,0,0,.35)}
+  .phone.dark .toolc .ic{border:none; box-shadow:0 2px 10px rgba(0,0,0,.35)}
   /* white-background buttons keep deep-green text (em-d is lighter on dark theme) */
   .aact .cta,.pw-cta,.hcta,.pvcta{color:#0A4632}
   .aact .cta svg,.pw-cta svg,.hcta svg,.pvcta svg{stroke:#0A4632}
   .fplay{color:#0A4632}
-  .as-tg{color:#7FD4B3}
+  .phone.dark .as-tg{color:#7FD4B3}
   /* welcome scrim: cream literals -> dark */
-  .wscrim{background:radial-gradient(64% 40% at 50% 47%, var(--paper) 36%, rgba(13,15,14,.74) 62%, rgba(13,15,14,.18) 100%)}
-  .welcome:not(.orbit-on) .wscrim{background:linear-gradient(180deg,rgba(13,15,14,.1),rgba(13,15,14,.55) 52%,var(--paper) 88%)}
+  .phone.dark .wscrim{background:radial-gradient(64% 40% at 50% 47%, var(--paper) 36%, rgba(13,15,14,.74) 62%, rgba(13,15,14,.18) 100%)}
+  .phone.dark .welcome:not(.orbit-on) .wscrim{background:linear-gradient(180deg,rgba(13,15,14,.1),rgba(13,15,14,.55) 52%,var(--paper) 88%)}
   /* store section sub-captions (fill sparse sections) */
   .sec-sub{padding:0 24px 10px; margin-top:-8px; font-size:11.5px; font-weight:600; color:var(--muted)}
 </style>
@@ -1165,6 +1174,7 @@
         <div class="stop">
           <div class="brandlock"><svg class="bl-ico" viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="32" fill="none" stroke="#0E5C43" stroke-width="5"/><circle cx="42" cy="42" r="22" fill="none" stroke="#D8B66A" stroke-width="2.6"/><path d="M47 42 L39 37.2 L39 46.8 Z" fill="#D8B66A"/></svg><span class="bl-wm">Ad<i>Short</i></span></div>
           <div class="tools">
+            <button class="shbtn" onclick="toggleTheme()" title="Light / Dark" id="themeBtn"><svg viewBox="0 0 24 24"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.6 6.6 0 0 0 21 12.8z"/></svg></button>
             <button class="shbtn" onclick="toggleSearch(true)" title="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg></button>
             <span class="chipc">◆ 40</span>
           </div>
@@ -2368,6 +2378,13 @@
   }
   document.querySelectorAll('.scroll,.body').forEach(watch);
   document.querySelectorAll('.nav button').forEach(function(b){ b.addEventListener('click', function(){ phone.classList.remove('navmin'); }); });
+
+  /* theme toggle — default LIGHT; remembered per browser */
+  window.toggleTheme=function(){
+    var dark=phone.classList.toggle('dark');
+    try{ localStorage.setItem('adshort-theme', dark?'dark':'light'); }catch(e){}
+  };
+  try{ if(localStorage.getItem('adshort-theme')==='dark') phone.classList.add('dark'); }catch(e){}
 
   /* search sheet (island) */
   window.toggleSearch=function(on){
