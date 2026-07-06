@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AdShort UI — Before / After</title>
+<style>
+  :root{--em:#0E5C43; --ink:#111; --mut:#8E8E93}
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{font-family:'Plus Jakarta Sans',-apple-system,system-ui,sans-serif; background:#0D0F0E; color:#fff; padding:40px 20px 80px}
+  .wrap{max-width:1080px; margin:0 auto}
+  h1{font-size:30px; font-weight:800; letter-spacing:-.5px}
+  h1 i{font-style:italic; color:#2EC494}
+  .sub{color:#98989F; font-size:14px; margin:8px 0 6px; line-height:1.5}
+  .links{font-size:13px; margin-bottom:34px}
+  .links a{color:#7FD4B3; text-decoration:none; margin-right:18px}
+  .pair{margin-bottom:56px}
+  .pair h2{font-size:19px; font-weight:800; margin-bottom:4px}
+  .pair .note{color:#98989F; font-size:13px; line-height:1.55; margin-bottom:14px; max-width:760px}
+  .cols{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+  @media (max-width:720px){ .cols{grid-template-columns:1fr} }
+  .shot{position:relative; border-radius:18px; overflow:hidden; background:#1C1C1E; border:1px solid rgba(255,255,255,.1)}
+  .shot img{display:block; width:100%; height:auto}
+  .tag{position:absolute; top:12px; left:12px; font-size:11px; font-weight:800; letter-spacing:.04em; padding:6px 13px; border-radius:999px; backdrop-filter:blur(8px)}
+  .tag.old{background:rgba(28,28,30,.65); color:#ff9f9f; border:1px solid rgba(255,255,255,.2)}
+  .tag.new{background:rgba(14,92,67,.75); color:#fff; border:1px solid rgba(255,255,255,.25)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Ad<i>Short</i> — UI Before / After</h1>
+  <p class="sub">Redesign theo iOS 26 (Liquid Glass) + xu hướng app creative 2026 · 06/07/2026<br>
+  Trái = bản cũ (nền giấy, serif, nút vuông) · Phải = bản mới (systemBackground, glass chrome, capsule, dark video)</p>
+  <p class="links">
+    <a href="https://binh171.github.io/adshoot-preview-f5bbdd/" target="_blank">▶ Demo bản cũ</a>
+    <a href="https://binh171.github.io/adshoot-preview-5b356e/" target="_blank">▶ Demo bản mới (bấm thử được)</a>
+  </p>
+
+  <div class="pair">
+    <h2>1 · Store</h2>
+    <p class="note">Nền be → systemGroupedBackground; header dính trên hoá kính khi cuộn; search bar → đảo kính cạnh tab bar (signature iOS 26); chip active đen → green brand; thêm card <b>before/after kéo tay</b>; hero tràn mép; tab bar nổi dạng pill, thu nhỏ khi cuộn.</p>
+    <div class="cols">
+      <div class="shot"><span class="tag old">BEFORE</span><img src="_compare/store_old.jpeg" alt=""></div>
+      <div class="shot"><span class="tag new">AFTER</span><img src="_compare/store_new.jpeg" alt=""></div>
+    </div>
+  </div>
+
+  <div class="pair">
+    <h2>2 · AdVideo</h2>
+    <p class="note"><b>Dark mode toàn màn</b> (chuẩn app video: CapCut/Reels); hero green tràn hết mép; card feed 9:16 phóng to; Switch + credit chip theo biến thể dark.</p>
+    <div class="cols">
+      <div class="shot"><span class="tag old">BEFORE</span><img src="_compare/advideo_old.jpeg" alt=""></div>
+      <div class="shot"><span class="tag new">AFTER</span><img src="_compare/advideo_new.jpeg" alt=""></div>
+    </div>
+  </div>
+
+  <div class="pair">
+    <h2>3 · Product</h2>
+    <p class="note">Large title 29px co giãn khi cuộn; card ảnh 4:5 cao, <b>tên đè lên ảnh</b> bằng gradient (kiểu Pinterest); bỏ viền card → shadow; badge video → glass chip.</p>
+    <div class="cols">
+      <div class="shot"><span class="tag old">BEFORE</span><img src="_compare/product_old.jpeg" alt=""></div>
+      <div class="shot"><span class="tag new">AFTER</span><img src="_compare/product_new.jpeg" alt=""></div>
+    </div>
+  </div>
+
+  <div class="pair">
+    <h2>4 · Editor</h2>
+    <p class="note">Từ 5 tầng xếp dọc → <b>canvas full màn nền tối</b>, toolbar trên + dock tool dưới đều là thanh kính nổi (kiểu Photoroom); nút Save full-width → capsule Done.</p>
+    <div class="cols">
+      <div class="shot"><span class="tag old">BEFORE</span><img src="_compare/editor_old.jpeg" alt=""></div>
+      <div class="shot"><span class="tag new">AFTER</span><img src="_compare/editor_new.jpeg" alt=""></div>
+    </div>
+  </div>
+
+  <div class="pair">
+    <h2>5 · Make Ad (gen sheet)</h2>
+    <p class="note">Full-screen trượt kiểu web → <b>bottom sheet iOS</b>: drag handle, góc bo 30px, hở mép trên; nút Generate = gradient AI chạy động + ✦; cảnh báo rulebook thành callout chuẩn.</p>
+    <div class="cols">
+      <div class="shot"><span class="tag old">BEFORE</span><img src="_compare/gensheet_old.jpeg" alt=""></div>
+      <div class="shot"><span class="tag new">AFTER</span><img src="_compare/gensheet_new.jpeg" alt=""></div>
+    </div>
+  </div>
+
+  <div class="pair">
+    <h2>6 · Paywall</h2>
+    <p class="note">Headline serif → sans đậm; CTA capsule; tier chọn hoá kính; thêm <b>timeline trial</b> Today → Day 5 nhắc → Day 7 tính tiền (pattern tăng convert chuẩn 2026).</p>
+    <div class="cols">
+      <div class="shot"><span class="tag old">BEFORE</span><img src="_compare/paywall_old.jpeg" alt=""></div>
+      <div class="shot"><span class="tag new">AFTER</span><img src="_compare/paywall_new.jpeg" alt=""></div>
+    </div>
+  </div>
+
+  <p class="sub">Nền tảng: Apple HIG / WWDC25 Liquid Glass · teardown Photoroom, Pixelcut, CapCut, Canva, Instagram · roadmap đầy đủ trong repo (UI_ROADMAP.md)</p>
+</div>
+</body>
+</html>
