@@ -52,6 +52,12 @@
   .cta:active{transform:scale(.97)} .cta:hover{background:var(--em-d)} .cta:disabled{background:#E5E5EA; color:#8E8E93; cursor:default} .cta:disabled svg{stroke:#8E8E93}
   .cta svg{width:17px; height:17px; stroke:#fff; fill:none; stroke-width:1.9; transition:transform .2s var(--ease)}
   .cta:hover svg{transform:translateX(4px)}
+  /* welcome Begin — premium sheen + travelling light glare */
+  .wfoot .cta{position:relative; overflow:hidden; box-shadow:inset 0 1px 0 rgba(255,255,255,.38), 0 14px 34px rgba(14,92,67,.42)}
+  .wfoot .cta::before{content:''; position:absolute; top:-40%; bottom:-40%; left:-32%; width:26%; transform:skewX(-18deg); pointer-events:none; filter:blur(1px);
+    background:linear-gradient(105deg, transparent, rgba(255,255,255,.55) 46%, rgba(255,255,255,.14) 60%, transparent); animation:ctaglare 6s ease-in-out 1.4s infinite}
+  @keyframes ctaglare{0%,58%{left:-32%; opacity:0}64%{opacity:.95}82%,100%{left:122%; opacity:0}}
+  @media (prefers-reduced-motion:reduce){ .wfoot .cta::before{animation:none; display:none} }
   .cta.alt{background:var(--card); color:var(--ink); border:1.5px solid var(--line)} .cta.alt svg{stroke:var(--ink)} .cta.alt:hover{background:var(--paper2)}
   .link{display:block; width:100%; background:none; border:none; color:var(--muted); font-size:14px; padding:14px 0 0; cursor:pointer; font-family:var(--sans)}
   .link b{color:var(--em-d); font-weight:700}
@@ -225,7 +231,7 @@
 
   /* ============ STORE ============ */
   .stop{display:flex; align-items:center; justify-content:space-between; padding:52px 22px 8px}
-  .hbrand{font-family:var(--serif); font-weight:600; font-size:20px; color:var(--ink)} .hbrand b{font-style:italic; font-weight:500}
+  .hbrand{font-family:var(--brandserif); font-weight:600; font-size:21px; color:var(--ink)} .hbrand b{font-style:italic; font-weight:500}
   .stop .tools{display:flex; gap:8px; align-items:center}
   .chipc{font-size:12px; font-weight:800; padding:7px 13px; border-radius:999px; color:var(--em-d); cursor:pointer;
     background:rgba(255,255,255,.72); backdrop-filter:blur(12px) saturate(160%); -webkit-backdrop-filter:blur(12px) saturate(160%);
@@ -533,12 +539,12 @@
   .ed-save button:active{transform:scale(.99)} .ed-save button:hover{background:var(--em-d)} .ed-save button svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2}
 
   /* floating create/edit CTA — follows the Store screen (above bottom nav) */
-  .storefab{position:absolute; left:50%; bottom:100px; z-index:16; transform:translateX(-50%);
-    display:inline-flex; align-items:center; gap:9px; padding:15px 26px; border-radius:999px; border:none; cursor:pointer;
-    background:var(--em); color:#fff; font-family:var(--sans); font-weight:700; font-size:14.5px; letter-spacing:.01em; white-space:nowrap;
+  .storefab{position:absolute; left:50%; bottom:92px; z-index:16; transform:translateX(-50%);
+    display:inline-flex; align-items:center; gap:7px; padding:12px 20px; border-radius:999px; border:none; cursor:pointer;
+    background:var(--em); color:#fff; font-family:var(--sans); font-weight:700; font-size:14px; letter-spacing:.01em; white-space:nowrap;
     box-shadow:0 16px 36px rgba(8,52,38,.44); transition:transform .15s ease, background .2s; animation:fabIn .5s var(--ease) .25s both}
   .storefab:hover{background:var(--em-d)} .storefab:active{transform:translateX(-50%) scale(.97)}
-  .storefab svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2}
+  .storefab svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2}
   @keyframes fabIn{from{opacity:0; transform:translateX(-50%) translateY(16px)} to{opacity:1; transform:translateX(-50%)}}
 
   /* ============ PRODUCT (hub + detail) ============ */
@@ -932,13 +938,13 @@
   .gprompt{width:100%;min-height:62px;border:1px solid var(--line);border-radius:12px;background:var(--card);padding:12px;font-family:var(--sans);font-size:13px;color:var(--ink);resize:none;outline:none;line-height:1.4} .gprompt:focus{border-color:var(--em)}
   .gflab{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:12px 0 8px}
   .growx{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px} .growx::-webkit-scrollbar{display:none}
-  .fmtc{flex:none;width:92px;cursor:pointer}
-  .fmtc .fp{position:relative;aspect-ratio:1/1;border-radius:11px;border:1px solid var(--line);background:#fff;overflow:hidden;display:flex;align-items:center;justify-content:center;transition:.15s}
+  .fmtc{flex:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px}
+  .fmtc .fp{position:relative;height:50px;border-radius:8px;border:1px solid var(--line);background:#fff;overflow:hidden;flex:none}
   .fmtc.sel .fp{outline:2px solid var(--em);outline-offset:1px;border-color:var(--em)}
-  .fmtc .fp img{width:74%;height:74%;object-fit:contain;filter:drop-shadow(0 6px 8px rgba(20,20,20,.18))}
-  .fmtc .plg{position:absolute;top:5px;left:5px;width:18px;height:18px;border-radius:5px;display:grid;place-items:center;color:#fff;font-size:10px;font-weight:800}
-  .fmtc .fck{position:absolute;top:5px;right:5px;width:16px;height:16px;border-radius:50%;background:var(--em);color:#fff;display:none;align-items:center;justify-content:center;font-size:9px} .fmtc.sel .fck{display:flex}
-  .fmtc .fn{font-size:10.5px;font-weight:700;color:var(--ink);margin-top:6px} .fmtc .fd{font-size:9px;color:var(--muted)}
+  .fmtc .fp img{width:100%;height:100%;object-fit:cover}
+  .fmtc .plg{width:17px;height:17px;border-radius:5px;display:grid;place-items:center;color:#fff;font-size:10px;font-weight:800;flex:none}
+  .fmtc .fck{position:absolute;top:3px;right:3px;width:15px;height:15px;border-radius:50%;background:var(--em);color:#fff;display:none;align-items:center;justify-content:center;font-size:9px} .fmtc.sel .fck{display:flex}
+  .fmtc .fn{font-size:10px;font-weight:700;color:var(--ink);text-align:center} .fmtc .fd{font-size:9px;color:var(--muted);text-align:center}
   .gfoot{padding:12px 20px calc(16px + env(safe-area-inset-bottom)); border-top:1px solid var(--line); background:var(--paper)}
   .genBtn{width:100%; display:flex; align-items:center; justify-content:center; gap:9px; border:none; cursor:pointer; background:var(--ai); background-size:180% 180%; animation:aigrad 3.5s ease infinite; color:#fff; font-family:var(--sans); font-size:15.5px; font-weight:700; padding:16px; border-radius:999px; box-shadow:0 10px 26px rgba(14,92,67,.35)}
   .genBtn::before{content:'✦'; font-size:15px}
@@ -993,8 +999,8 @@
   .grbtns{display:flex; flex-direction:column; gap:9px; padding:0 20px calc(16px + env(safe-area-inset-bottom))}
 
   /* floating "Make an ad" CTA */
-  .fabMake{position:absolute; left:32px; right:32px; bottom:100px; z-index:41; display:flex; align-items:center; justify-content:center; gap:9px; background:var(--em); color:#fff; border:none; cursor:pointer; font-family:var(--sans); font-size:15.5px; font-weight:700; padding:16px; border-radius:999px; box-shadow:0 16px 34px rgba(14,92,67,.38); transform:translateY(20px); opacity:0; pointer-events:none; transition:opacity .3s, transform .35s var(--ease)}
-  .fabMake.show{opacity:1; transform:none; pointer-events:auto}
+  .fabMake{position:absolute; left:50%; bottom:92px; z-index:41; display:flex; align-items:center; gap:7px; background:var(--em); color:#fff; border:none; cursor:pointer; font-family:var(--sans); font-size:14px; font-weight:700; padding:12px 20px; border-radius:999px; box-shadow:0 16px 34px rgba(14,92,67,.38); transform:translate(-50%,20px); opacity:0; pointer-events:none; transition:opacity .3s, transform .35s var(--ease)}
+  .fabMake.show{opacity:1; transform:translateX(-50%); pointer-events:auto}
   .fabMake:hover{background:var(--em-d)} .fabMake svg{width:17px;height:17px;stroke:#fff;fill:none;stroke-width:1.9}
 
   @media (prefers-reduced-motion:reduce){
@@ -1048,9 +1054,9 @@
   .as-ping{position:absolute; left:50%; top:50%; width:30px; height:30px; margin:-15px 0 0 -15px; border-radius:50%; border:2px solid #D8B66A; opacity:0}
   .as-stage.done .as-ping{animation:asPing 1.15s ease-out .15s}
   @keyframes asPing{0%{opacity:.7; transform:scale(.5)}100%{opacity:0; transform:scale(2.7)}}
-  .as-mk{font-family:var(--serif); font-weight:500; font-size:30px; letter-spacing:-.7px; color:var(--ink); line-height:1}
+  .as-mk{font-family:var(--brandserif); font-weight:500; font-size:32px; letter-spacing:-.5px; color:var(--ink); line-height:1}
   .as-mk i{font-style:italic; color:var(--em)}
-  .as-tg{font-family:var(--serif); font-style:italic; font-size:12px; font-weight:500; letter-spacing:.01em; color:var(--em); margin-top:9px; white-space:nowrap}
+  .as-tg{font-family:var(--brandserif); font-style:italic; font-size:12.5px; font-weight:500; letter-spacing:.01em; color:var(--em); margin-top:9px; white-space:nowrap}
   .as-sub{font-size:13px; color:var(--ink2); line-height:1.55; text-align:center; margin-bottom:14px; padding:0 4px}
   @media (prefers-reduced-motion:reduce){
     .as-sweepBack,.as-sweepFront{display:none}
@@ -1062,8 +1068,10 @@
   .toolgrid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px 8px; padding:4px 20px 4px}
   .toolc{display:flex; flex-direction:column; align-items:center; gap:8px; padding:2px 0; background:none; border:none; box-shadow:none; cursor:pointer; transition:transform .18s var(--ease); text-align:center}
   .toolc:active{transform:scale(.93)} .toolc:hover .ic{transform:translateY(-2px); box-shadow:0 8px 18px rgba(0,0,0,.1)}
-  .toolc .ic{width:60px; height:60px; border-radius:19px; display:grid; place-items:center; background:#fff;
-    box-shadow:0 2px 8px rgba(0,0,0,.07); transition:transform .18s var(--ease), box-shadow .2s}
+  .toolc .ic{width:60px; height:60px; border-radius:19px; display:grid; place-items:center; border:1px solid transparent;
+    background:linear-gradient(rgba(255,255,255,.55),rgba(255,255,255,.55)) padding-box, linear-gradient(135deg, rgba(255,255,255,.95), rgba(255,255,255,.3) 45%, rgba(255,255,255,.72)) border-box;
+    backdrop-filter:blur(14px) saturate(180%); -webkit-backdrop-filter:blur(14px) saturate(180%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.7), 0 4px 14px rgba(0,0,0,.06); transition:transform .18s var(--ease), box-shadow .2s}
   .toolc .ic svg{width:24px; height:24px; stroke:var(--em); fill:none; stroke-width:1.9}
   .toolc .tl{font-size:11px; font-weight:600; color:var(--ink2); line-height:1.15}
   .toolc.hide{display:none}
@@ -1091,8 +1099,9 @@
   .phone.dark .pdsring{background:conic-gradient(#2EC494 68%, rgba(255,255,255,.12) 0)}
   .phone.dark .ed-frame{box-shadow:0 26px 64px rgba(0,0,0,.7)}
   /* content tiles stay bright — product photos live on white */
-  .scenecard.fmt .si,.gslot,.fmtc .fp,.grhk .b,.rszc .rp,.toolc .ic{background:#fff}
-  .phone.dark .toolc .ic{border:none; box-shadow:0 2px 10px rgba(0,0,0,.35)}
+  .scenecard.fmt .si,.gslot,.fmtc .fp,.grhk .b,.rszc .rp{background:#fff}
+  .phone.dark .toolc .ic{background:linear-gradient(rgba(255,255,255,.10),rgba(255,255,255,.10)) padding-box, linear-gradient(135deg, rgba(255,255,255,.4), rgba(255,255,255,.08) 45%, rgba(255,255,255,.22)) border-box; box-shadow:inset 0 1px 0 rgba(255,255,255,.18), 0 4px 14px rgba(0,0,0,.4)}
+  .phone.dark .toolc .ic svg{stroke:#7FD4B3}
   /* white-background buttons keep deep-green text (em-d is lighter on dark theme) */
   .aact .cta,.pw-cta,.hcta,.pvcta{color:#0A4632}
   .aact .cta svg,.pw-cta svg,.hcta svg,.pvcta svg{stroke:#0A4632}
@@ -1187,6 +1196,45 @@
   .pick-tabs{box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
   .toast{box-shadow:inset 0 1px 0 rgba(255,255,255,.18), 0 8px 24px rgba(0,0,0,.35)}
   .genBtn{box-shadow:inset 0 1px 0 rgba(255,255,255,.35), 0 10px 26px rgba(14,92,67,.35)}
+
+  /* ============ V12: AdVideo result — V2 actions + creative-format suggestions ============ */
+  .fabMake .fspk{font-size:15px;line-height:1;font-weight:700}
+  .gract{display:flex;gap:9px;padding:16px 20px 2px}
+  .gract .grbtn{flex:1;width:auto;padding:14px 8px;font-size:13.5px;gap:7px}
+  .grbtn svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2} .grbtn .cv{width:13px;height:13px} .grbtn.open .cv{transform:rotate(180deg)}
+  .grbtn.pub{background:var(--card);color:var(--ink);border:1.5px solid var(--line)}
+  .admenu{display:none;margin:9px 20px 2px;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .admenu.open{display:block}
+  .ami{display:flex;align-items:center;gap:12px;padding:12px 14px;font-size:13.5px;font-weight:700;color:var(--ink);border-bottom:1px solid var(--line);cursor:pointer}
+  .ami:last-child{border-bottom:none}
+  .ami .txt{line-height:1.15} .ami .txt small{display:block;font-weight:600;color:var(--muted);font-size:10.5px;margin-top:1px}
+  .ami .par{width:16px;height:16px;stroke:var(--muted);fill:none;stroke-width:2;margin-left:auto;flex:none}
+  .fmsug{padding:2px 20px 2px}
+  .fmsug-h{display:flex;align-items:center;gap:7px;font-family:var(--serif);font-size:15px;font-weight:500;color:var(--ink);margin:12px 0 3px}
+  .fmsug-h .spk{color:var(--em-d);font-size:15px}
+  .fmsug-p{font-size:11px;color:var(--muted);font-weight:600;margin:0 0 11px}
+  .fmrow{overflow:hidden;padding-bottom:6px}
+  .fmtrack{display:flex;gap:12px;width:max-content;animation:fmmarq 26s linear infinite}
+  .fmrow:hover .fmtrack,.fmrow:active .fmtrack{animation-play-state:paused}
+  @keyframes fmmarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .fmc{flex:none;width:110px;cursor:pointer}
+  .fmc .fv{position:relative;aspect-ratio:9/16;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#16241d}
+  .fmc .fv video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .fmc .fv .fsc{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,20,14,.55),transparent 46%)}
+  .fmc .fv .fmg{position:absolute;top:6px;right:6px;z-index:2;width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.92);color:#0A4632;display:grid;place-items:center;font-size:16px;font-weight:800;line-height:1}
+  .fmc .fmn{font-family:var(--serif);font-size:13px;font-weight:500;color:var(--ink);margin:7px 1px 0}
+  .fmc .fwhy{font-size:10px;color:var(--muted);font-weight:600;margin:2px 1px 0;line-height:1.35}
+  .phone.dark .grbtn.pub{border-color:rgba(255,255,255,.12)}
+  .phone.dark .admenu{border-color:rgba(255,255,255,.1)}
+  .phone.dark .ami{border-color:rgba(255,255,255,.08)}
+  .phone.dark .fmc .fv{border-color:rgba(255,255,255,.08)}
+  .grnote{display:flex;align-items:center;gap:11px;width:100%;padding:12px 14px;border-radius:14px;background:var(--card);border:1px solid var(--line);cursor:pointer;font-family:var(--sans);text-align:left}
+  .grnote .ni{width:20px;height:20px;stroke:var(--em-d);fill:none;stroke-width:1.7;flex:none}
+  .grnote .gn-t{display:flex;flex-direction:column;line-height:1.25;font-size:13.5px;font-weight:700;color:var(--ink)}
+  .grnote .gn-t small{font-weight:600;color:var(--muted);font-size:10.5px;margin-top:1px}
+  .grnote .go{width:16px;height:16px;stroke:var(--muted);fill:none;stroke-width:2;margin-left:auto;flex:none}
+  .phone.dark .grnote{border-color:rgba(255,255,255,.1)}
+  @media (prefers-reduced-motion:reduce){ .fmtrack{animation:none!important} }
 </style>
 </head>
 <body>
@@ -1744,7 +1792,7 @@
       <div id="gen">
         <div class="gtop">
           <div class="gx" id="genX">✕</div>
-          <div class="gtt">Make ad</div>
+          <div class="gtt">Create your ad</div>
           <div class="gchip" id="genTitle">UGC Ad</div>
         </div>
 
@@ -1815,8 +1863,25 @@
         <!-- result -->
         <div class="gresult">
           <div class="grvid"><video id="grVid" muted loop playsinline preload="auto"></video><span class="grbadge">✓ Ready to run</span></div>
-          <div class="rsz" id="rsz"></div>
-          <div class="grsave"><button class="grbtn pri" id="grSave">＋ Save to product</button></div>
+
+          <!-- V2 actions: Download + Send to ad platform, split row -->
+          <div class="gract">
+            <button class="grbtn pri" id="grDownload"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Download · <span id="dlN">2</span></button>
+            <button class="grbtn pub" id="grSend"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg>Send to ads<svg class="cv" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+          </div>
+          <div class="admenu" id="adMenu">
+            <div class="ami" data-p="Meta Ads Manager"><span class="plogo" style="background:#0866FF">M</span><div class="txt">Meta Ads Manager<small>Facebook · Instagram ads</small></div><svg class="par" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></div>
+            <div class="ami" data-p="TikTok Ads Manager"><span class="plogo" style="background:#010101">♪</span><div class="txt">TikTok Ads Manager<small>Spark · in-feed ads</small></div><svg class="par" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></div>
+            <div class="ami" data-p="Google Ads"><span class="plogo" style="background:#4285F4">G</span><div class="txt">Google Ads<small>YouTube · Demand Gen</small></div><svg class="par" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></div>
+          </div>
+          <div class="grsave"><button class="grnote" id="grSave"><svg class="ni" viewBox="0 0 24 24"><path d="M5 4h10l4 4v12a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z"/><path d="M15 4v4h4"/><path d="M8 13h7M8 16.5h4"/></svg><span class="gn-t">Save to product<small>Find it anytime in the Product tab</small></span><svg class="go" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+
+          <!-- creative-format suggestions (logic per detected product) -->
+          <div class="fmsug">
+            <div class="fmsug-h"><span class="spk">✦</span> Formats that fit this product</div>
+            <div class="fmsug-p" id="fmSugP"></div>
+            <div class="fmrow" id="fmRow"></div>
+          </div>
 
           <!-- compliance Pro -->
           <div class="gpro">
@@ -1828,13 +1893,6 @@
             </div>
             <button class="gpro-cta" id="proCta">Unlock Compliance Guard with Pro →</button>
           </div>
-
-          <div class="grexp"><div class="gh2">Export per placement</div></div>
-          <div class="grbtns">
-            <button class="grbtn pri" onclick="toast('Downloaded selected placements (demo)')">Download selected formats</button>
-            <button class="grbtn sec" onclick="toast('Posting to Meta Ads (demo)')"><span class="plogo" style="background:#0866FF">M</span>Post to Meta Ads</button>
-            <button class="grbtn sec" onclick="toast('Posting to TikTok (demo)')"><span class="plogo" style="background:#010101">♪</span>Post to TikTok</button>
-          </div>
         </div>
       </div>
 
@@ -1845,7 +1903,7 @@
         <button onclick="go('product')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg>Product</button>
       </div>
 
-      <button class="fabMake" id="fabMake">Make an ad<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <button class="fabMake" id="fabMake"><span class="fspk">✦</span>Create ad</button>
     </section>
 
 
@@ -2344,9 +2402,10 @@
     {g:'soc', name:'TikTok',        dims:'1080×1920', c:'#111',    L:'♪'}
   ];
   var fmtSel={'Reels / Story':true,'Instagram post':true};
-  function fmtCardHTML(f){ return '<div class="fmtc'+(fmtSel[f.name]?' sel':'')+'" data-n="'+f.name+'"><div class="fp"><span class="plg" style="background:'+f.c+'">'+f.L+'</span><img src="advideo/_aha_onmodel/dress_cutout.png" alt=""><span class="fck">✓</span></div><div class="fn">'+f.name+'</div><div class="fd">'+f.dims+'</div></div>'; }
+  function fmtCardHTML(f){ var dd=f.dims.split('×'), ar=(dd.length===2 && parseInt(dd[0]) && parseInt(dd[1]))?(parseInt(dd[0])+'/'+parseInt(dd[1])):'1/1';
+    return '<div class="fmtc'+(fmtSel[f.name]?' sel':'')+'" data-n="'+f.name+'"><div class="fp" style="aspect-ratio:'+ar+'"><img src="advideo/_aha_onmodel/dress_cutout.png" alt=""><span class="fck">✓</span></div><span class="plg" style="background:'+f.c+'">'+f.L+'</span><div class="fn">'+f.name+'</div><div class="fd">'+f.dims+'</div></div>'; }
   function fmtCount(){ return Object.keys(fmtSel).filter(function(k){return fmtSel[k];}).length; }
-  function updNote(){ genNote.textContent='Output: 1 ad · '+fmtCount()+' formats'+(cta!=='No CTA'?' · CTA "'+cta+'"':'')+' · ready to run'; document.getElementById('fmtCount').textContent=fmtCount()+' selected'; }
+  function updNote(){ genNote.textContent='Output: 1 ad · '+fmtCount()+' formats'+(cta!=='No CTA'?' · CTA "'+cta+'"':'')+' · ready to run'; document.getElementById('fmtCount').textContent=fmtCount()+' selected'; var dln=document.getElementById('dlN'); if(dln) dln.textContent=fmtCount(); }
   function renderFmts(){
     document.getElementById('fmtMkt').innerHTML=FMTS.filter(function(f){return f.g==='mkt';}).map(fmtCardHTML).join('');
     document.getElementById('fmtSoc').innerHTML=FMTS.filter(function(f){return f.g==='soc';}).map(fmtCardHTML).join('');
@@ -2376,7 +2435,7 @@
     genMode=mode||'template';
     document.getElementById('gtrack').querySelectorAll('.mqcard').forEach(function(x){x.classList.remove('sel');});
     if(genMode==='template'){ genTitle.textContent=(o&&o.title)||'Format'; setRefDisabled(true); }
-    else { genTitle.textContent='New ad'; setRefDisabled(false); }
+    else { genTitle.textContent='Custom'; setRefDisabled(false); }
     var clip=(o&&o.type==='video'&&o.src)?o.src:PX+'formats/ugc_ad.mp4';
     grVid.src=clip;
     gen.classList.remove('done','working'); updNote(); gen.classList.add('show');
@@ -2399,40 +2458,57 @@
     var bar=document.getElementById('gpBar'), step=document.getElementById('gpStep');
     gen.classList.remove('done'); gen.classList.add('working'); bar.style.width='0%'; var i=0;
     (function tick(){ step.textContent=STEPS[i]; bar.style.width=Math.round((i+1)/STEPS.length*100)+'%'; i++;
-      if(i<STEPS.length){ progTimer=setTimeout(tick,780); } else { progTimer=setTimeout(function(){ gen.classList.remove('working'); gen.classList.add('done'); var p=grVid.play(); if(p&&p.catch)p.catch(function(){}); },820); } })();
+      if(i<STEPS.length){ progTimer=setTimeout(tick,780); } else { progTimer=setTimeout(function(){ gen.classList.remove('working'); gen.classList.add('done'); var am=document.getElementById('adMenu'); if(am)am.classList.remove('open'); var sb=document.getElementById('grSend'); if(sb)sb.classList.remove('open'); renderSug(); var p=grVid.play(); if(p&&p.catch)p.catch(function(){}); },820); } })();
   }
   genBtn.addEventListener('click', runGen);
   document.getElementById('gpCancel').addEventListener('click', function(){ if(progTimer)clearTimeout(progTimer); gen.classList.remove('working'); });
   document.getElementById('grSave').addEventListener('click', function(){ toast('Saved to product · '+PRODUCTS[activeProd].name+' ✓'); });
-  var RSZ=[
-    {n:'Story / Reels',  dims:'1080×1920', ar:'9 / 16',  w:52,  c:'#C13584', L:'◎'},
-    {n:'TikTok',         dims:'1080×1920', ar:'9 / 16',  w:52,  c:'#111',    L:'♪'},
-    {n:'YouTube Shorts', dims:'1080×1920', ar:'9 / 16',  w:52,  c:'#FF0000', L:'▶'},
-    {n:'Instagram post', dims:'1080×1080', ar:'1 / 1',   w:92,  c:'#C13584', L:'◎'},
-    {n:'Instagram feed', dims:'1080×1350', ar:'4 / 5',   w:74,  c:'#C13584', L:'◎'},
-    {n:'Facebook post',  dims:'1200×630',  ar:'1.9 / 1', w:150, c:'#1877F2', L:'f'},
-    {n:'Pinterest',      dims:'1000×1500', ar:'2 / 3',   w:61,  c:'#E60023', L:'P'},
-    {n:'Twitter / X',    dims:'1600×900',  ar:'16 / 9',  w:150, c:'#111',    L:'X'},
-    {n:'LinkedIn',       dims:'1200×627',  ar:'1.9 / 1', w:150, c:'#0A66C2', L:'in'},
-    {n:'Shopify',        dims:'2048×2048', ar:'1 / 1',   w:92,  c:'#95BF47', L:'S'},
-    {n:'Amazon',         dims:'2000×2000', ar:'1 / 1',   w:92,  c:'#FF9900', L:'a'},
-    {n:'Etsy',           dims:'2000×2500', ar:'4 / 5',   w:74,  c:'#F45800', L:'E'},
-    {n:'Custom size',    dims:'Any ratio', ar:'9 / 16',  w:74,  c:'#1A1A1A', L:'⤢', cst:true}
-  ];
-  (function renderRsz(){
-    function card(r,k){
-      var inner = r.cst ? '⤢' : '<img src="advideo/_aha_onmodel/dress_mannequin.png" alt=""><span class="plg" style="background:'+r.c+'">'+r.L+'</span><span class="fck">✓</span>';
-      return '<div class="rszc'+(k===0?' on':'')+(r.cst?' cst':'')+'" data-k="'+k+'" data-ar="'+r.ar+'" data-cst="'+(r.cst?1:0)+'"><span class="rp" style="width:'+r.w+'px">'+inner+'</span><span class="rn">'+r.n+'</span><span class="rd">'+r.dims+'</span></div>';
-    }
-    var html=''; RSZ.forEach(function(r,k){html+=card(r,k);}); RSZ.forEach(function(r,k){html+=card(r,k);});
-    document.getElementById('rsz').innerHTML='<div class="rtrack">'+html+'</div>';
-    document.querySelectorAll('#rsz .rszc').forEach(function(c){ c.addEventListener('click', function(){
-      var k=c.dataset.k;
-      document.querySelectorAll('#rsz .rszc').forEach(function(x){x.classList.toggle('on',x.dataset.k===k);});
-      if(c.dataset.cst==='1'){ toast('Custom size (demo)'); return; }
-      document.querySelector('#gen .grvid').style.aspectRatio=c.dataset.ar;
-      toast('Resized · '+c.querySelector('.rn').textContent+' · '+c.querySelector('.rd').textContent);
+  // creative-format suggestions — logic keyed to detected product category
+  var FMT_BY_NAME={}; FMT.forEach(function(f){ FMT_BY_NAME[f.title]=f; });
+  var FMT_LOGIC={
+    'Apparel':{p:'Apparel sells worn and in motion — strong next steps:',list:[
+      {n:'Editorial Try-On', why:'Show the drape and fit'},
+      {n:'UGC Try-On',       why:'Real body, real movement'},
+      {n:'Commercial',       why:'Premium brand polish'},
+      {n:'Motion Ad',        why:'Fabric in motion stops scroll'}]},
+    'Beauty':{p:'Beauty converts on demo and proof — strong next steps:',list:[
+      {n:'Tutorial',        why:'How to apply, step by step'},
+      {n:'Product Review',  why:'Texture and before / after'},
+      {n:'UGC Ad',          why:'Trust from a real creator'},
+      {n:'Unboxing',        why:'First-use reveal'}]},
+    'Tech':{p:'Tech converts on reveal and features — strong next steps:',list:[
+      {n:'Unboxing',        why:'Tactile reveal builds desire'},
+      {n:'Tutorial',        why:'Show the key features'},
+      {n:'Product Review',  why:'Specs plus hands-on proof'},
+      {n:'Motion Ad',       why:'Sleek product motion'}]}
+  };
+  var FMT_DEFAULT={p:'Proven next formats for this product:',list:[
+      {n:'UGC Ad',         why:'Trust from a real creator'},
+      {n:'Product Review', why:'Hands-on proof'},
+      {n:'Tutorial',       why:'Show it in use'},
+      {n:'Commercial',     why:'Premium brand polish'}]};
+  function renderSug(){
+    var cat=(PRODUCTS[activeProd].cat||'').split(' · ')[0];
+    var made=(genTitle.textContent||'').trim();
+    var cfg=FMT_LOGIC[cat]||FMT_DEFAULT;
+    document.getElementById('fmSugP').textContent=cfg.p;
+    var items=cfg.list.filter(function(x){ return x.n!==made; });
+    var row=document.getElementById('fmRow');
+    var cards=items.map(function(x){
+      var f=FMT_BY_NAME[x.n]; var src=f?f.src:PX+'formats/ugc_ad.mp4';
+      return '<div class="fmc" data-n="'+x.n+'"><div class="fv"><video src="'+src+'" muted loop playsinline autoplay preload="metadata"></video><div class="fsc"></div><span class="fmg">+</span></div><div class="fmn">'+x.n+'</div><div class="fwhy">'+x.why+'</div></div>';
+    }).join('');
+    row.innerHTML='<div class="fmtrack">'+cards+cards+'</div>';
+    row.querySelectorAll('.fmc').forEach(function(c){ c.addEventListener('click', function(){
+      var n=c.dataset.n, f=FMT_BY_NAME[n];
+      openGen({title:n, type:'video', src:f?f.src:null}, 'template');
+      toast('Now making · '+n+' for '+PRODUCTS[activeProd].name);
     }); });
+  }
+  document.getElementById('grDownload').addEventListener('click', function(){ toast('Downloaded '+fmtCount()+' formats — ready to upload to your ad manager (demo)'); });
+  (function(){ var sb=document.getElementById('grSend'), m=document.getElementById('adMenu');
+    sb.addEventListener('click', function(){ var open=m.classList.toggle('open'); sb.classList.toggle('open',open); });
+    m.querySelectorAll('.ami').forEach(function(it){ it.addEventListener('click', function(){ m.classList.remove('open'); sb.classList.remove('open'); toast('Sending creative to '+it.dataset.p+' (demo)'); }); });
   })();
   document.getElementById('proCta').addEventListener('click', function(){ toast('Upgrade to Pro — Compliance Guard (demo)'); });
 
