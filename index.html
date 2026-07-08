@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" rel="stylesheet">
 <style>
   :root{
     /* iOS 26 skin — LIGHT default; .phone.dark switches the whole set */
@@ -1234,6 +1235,22 @@
   .grnote .gn-t small{font-weight:600;color:var(--muted);font-size:10.5px;margin-top:1px}
   .grnote .go{width:16px;height:16px;stroke:var(--muted);fill:none;stroke-width:2;margin-left:auto;flex:none}
   .phone.dark .grnote{border-color:rgba(255,255,255,.1)}
+  /* export formats — 1 row / platform + ratio & size dropdowns */
+  .fmtrow{display:flex;align-items:center;gap:8px;padding:9px 10px;border-radius:12px;border:1px solid var(--line);background:var(--card);margin-bottom:8px}
+  .fmtrow.on{border-color:var(--em);background:var(--em-soft)}
+  .fmtrow .lg{width:28px;height:28px;border-radius:8px;background:#fff;display:grid;place-items:center;flex:none;border:1px solid var(--line)}
+  .fmtrow .lg i{font-size:18px} .fmtrow .lg svg{width:17px;height:17px}
+  .fmtrow .fnm{flex:1;min-width:0;font-size:12.5px;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .fmtrow .dd{position:relative;flex:none}
+  .fmtrow .dd::after{content:'▾';position:absolute;right:6px;top:50%;transform:translateY(-50%);font-size:9px;color:var(--muted);pointer-events:none}
+  .fmtrow select{appearance:none;-webkit-appearance:none;background:var(--paper2);color:var(--ink);border:1px solid var(--line);border-radius:8px;font-family:var(--sans);font-size:11.5px;font-weight:700;padding:7px 20px 7px 9px;cursor:pointer;outline:none}
+  .fmtrow select.ra{width:58px} .fmtrow select.sz{width:104px}
+  .fmtrow .ck{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line);flex:none;display:grid;place-items:center;color:transparent;font-size:11px;font-weight:800;cursor:pointer}
+  .fmtrow.on .ck{background:var(--em);border-color:var(--em);color:#fff}
+  .fmtrow.sec{display:none} .gstep.exp .fmtrow.sec{display:flex}
+  .fmtmore{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;margin-top:2px;padding:11px;border-radius:12px;background:none;border:1px dashed var(--line);color:var(--em-d);font-family:var(--sans);font-size:12.5px;font-weight:700;cursor:pointer}
+  .fmtmore .cv{transition:transform .25s;font-size:10px} .gstep.exp .fmtmore .cv{transform:rotate(180deg)}
+  .phone.dark .fmtrow{border-color:rgba(255,255,255,.08)}
   @media (prefers-reduced-motion:reduce){ .fmtrack{animation:none!important} }
 </style>
 </head>
@@ -1836,12 +1853,13 @@
           </div>
 
           <!-- 4 export formats -->
-          <div class="gstep">
+          <div class="gstep" id="stepFmt">
             <div class="gh"><b>4 · Export formats</b><span id="fmtCount">2 selected</span></div>
+            <div class="gflab">Ad placements</div>
+            <div id="fmtAds"></div>
             <div class="gflab">Marketplace</div>
-            <div class="growx" id="fmtMkt"></div>
-            <div class="gflab">Social</div>
-            <div class="growx" id="fmtSoc"></div>
+            <div id="fmtMkt"></div>
+            <button class="fmtmore" id="fmtMore">More platforms<span class="cv">▾</span></button>
           </div>
           <div style="height:8px"></div>
         </div>
@@ -2390,26 +2408,35 @@
   var grVid=document.getElementById('grVid');
   var genBtn=document.getElementById('genBtn'), genNote=document.getElementById('genNote');
 
+  // one row / platform · ratio + size dropdowns (ratio drives size) · native res per model
   var FMTS=[
-    {g:'mkt', name:'Shopify',       dims:'2048×2048', c:'#95BF47', L:'S'},
-    {g:'mkt', name:'Amazon',        dims:'2000×2000', c:'#FF9900', L:'a'},
-    {g:'mkt', name:'Etsy',          dims:'2000×1600', c:'#F45800', L:'E'},
-    {g:'mkt', name:'TikTok Shop',   dims:'1080×1920', c:'#111',    L:'♪'},
-    {g:'soc', name:'Reels / Story', dims:'1080×1920', c:'#C13584', L:'◎'},
-    {g:'soc', name:'Instagram post',dims:'1080×1080', c:'#C13584', L:'◎'},
-    {g:'soc', name:'Instagram feed',dims:'1080×1350', c:'#C13584', L:'◎'},
-    {g:'soc', name:'Facebook',      dims:'1200×630',  c:'#1877F2', L:'f'},
-    {g:'soc', name:'TikTok',        dims:'1080×1920', c:'#111',    L:'♪'}
+    {g:'ad',pri:1,id:'meta',     name:'Meta Ads',   ic:'ti-brand-meta',      c:'#0866FF', map:{'9:16':['1080×1920','720×1280'],'4:5':['1080×1350'],'1:1':['1080×1080','1200×1200']}},
+    {g:'ad',pri:1,id:'tiktok',   name:'TikTok Ads', ic:'ti-brand-tiktok',    c:'#111',    map:{'9:16':['1080×1920','720×1280']}},
+    {g:'ad',      id:'instagram',name:'Instagram',  ic:'ti-brand-instagram', c:'#E1306C', map:{'9:16':['1080×1920'],'4:5':['1080×1350'],'1:1':['1080×1080']}},
+    {g:'ad',      id:'facebook', name:'Facebook',   ic:'ti-brand-facebook',  c:'#1877F2', map:{'9:16':['1080×1920'],'1:1':['1080×1080'],'1.91:1':['1200×630']}},
+    {g:'ad',      id:'youtube',  name:'YouTube Ads',ic:'ti-brand-youtube',   c:'#FF0000', map:{'9:16':['1080×1920'],'16:9':['1920×1080','1280×720']}},
+    {g:'mk',pri:1,id:'shopify',  name:'Shopify',    svg:'<svg viewBox="0 0 24 24" fill="none" stroke="#5E8E3E" stroke-width="2"><path d="M6 8h12l-1 11H7z"/><path d="M9 8V6.4a3 3 0 0 1 6 0V8"/></svg>', c:'#5E8E3E', map:{'1:1':['2048×2048','2400×2400']}},
+    {g:'mk',      id:'amazon',   name:'Amazon',     ic:'ti-brand-amazon',    c:'#FF9900', map:{'1:1':['2000×2000','3000×3000']}},
+    {g:'mk',      id:'etsy',     name:'Etsy',       ic:'ti-brand-etsy',      c:'#F45800', map:{'4:5':['2000×2500'],'1:1':['2000×2000']}}
   ];
-  var fmtSel={'Reels / Story':true,'Instagram post':true};
-  function fmtCardHTML(f){ var dd=f.dims.split('×'), ar=(dd.length===2 && parseInt(dd[0]) && parseInt(dd[1]))?(parseInt(dd[0])+'/'+parseInt(dd[1])):'1/1';
-    return '<div class="fmtc'+(fmtSel[f.name]?' sel':'')+'" data-n="'+f.name+'"><div class="fp" style="aspect-ratio:'+ar+'"><img src="advideo/_aha_onmodel/dress_cutout.png" alt=""><span class="fck">✓</span></div><span class="plg" style="background:'+f.c+'">'+f.L+'</span><div class="fn">'+f.name+'</div><div class="fd">'+f.dims+'</div></div>'; }
+  var fmtSel={'meta':true,'tiktok':true};
+  function opts(a){ return a.map(function(v){return '<option>'+v+'</option>';}).join(''); }
+  function fmtRowHTML(f){ var rs=Object.keys(f.map);
+    return '<div class="fmtrow'+(f.pri?'':' sec')+(fmtSel[f.id]?' on':'')+'" data-id="'+f.id+'">'
+      +'<span class="lg">'+(f.svg?f.svg:'<i class="ti '+f.ic+'" style="color:'+f.c+'"></i>')+'</span><span class="fnm">'+f.name+'</span>'
+      +'<span class="dd"><select class="ra">'+opts(rs)+'</select></span>'
+      +'<span class="dd"><select class="sz">'+opts(f.map[rs[0]])+'</select></span><span class="ck">✓</span></div>'; }
   function fmtCount(){ return Object.keys(fmtSel).filter(function(k){return fmtSel[k];}).length; }
   function updNote(){ genNote.textContent='Output: 1 ad · '+fmtCount()+' formats'+(cta!=='No CTA'?' · CTA "'+cta+'"':'')+' · ready to run'; document.getElementById('fmtCount').textContent=fmtCount()+' selected'; var dln=document.getElementById('dlN'); if(dln) dln.textContent=fmtCount(); }
   function renderFmts(){
-    document.getElementById('fmtMkt').innerHTML=FMTS.filter(function(f){return f.g==='mkt';}).map(fmtCardHTML).join('');
-    document.getElementById('fmtSoc').innerHTML=FMTS.filter(function(f){return f.g==='soc';}).map(fmtCardHTML).join('');
-    gen.querySelectorAll('.fmtc').forEach(function(c){ c.addEventListener('click', function(){ var n=c.dataset.n; fmtSel[n]=!fmtSel[n]; c.classList.toggle('sel',fmtSel[n]); updNote(); }); });
+    var byId={}; FMTS.forEach(function(f){byId[f.id]=f;});
+    document.getElementById('fmtAds').innerHTML=FMTS.filter(function(f){return f.g==='ad';}).map(fmtRowHTML).join('');
+    document.getElementById('fmtMkt').innerHTML=FMTS.filter(function(f){return f.g==='mk';}).map(fmtRowHTML).join('');
+    gen.querySelectorAll('.fmtrow').forEach(function(r){ var f=byId[r.dataset.id]; var ra=r.querySelector('.ra'), sz=r.querySelector('.sz'), ck=r.querySelector('.ck');
+      ra.addEventListener('change', function(){ sz.innerHTML=opts(f.map[ra.value]); });
+      ck.addEventListener('click', function(){ fmtSel[f.id]=!fmtSel[f.id]; r.classList.toggle('on',!!fmtSel[f.id]); updNote(); }); });
+    var mb=document.getElementById('fmtMore'), st=document.getElementById('stepFmt');
+    if(mb) mb.addEventListener('click', function(){ var e=st.classList.toggle('exp'); mb.childNodes[0].nodeValue=e?'Fewer platforms':'More platforms'; });
   }
 
   var MQ=[
