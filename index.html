@@ -1252,6 +1252,118 @@
   .fmtmore .cv{transition:transform .25s;font-size:10px} .gstep.exp .fmtmore .cv{transform:rotate(180deg)}
   .phone.dark .fmtrow{border-color:rgba(255,255,255,.08)}
   @media (prefers-reduced-motion:reduce){ .fmtrack{animation:none!important} }
+
+  /* ===== AdVideo header: viền line + glass luôn hiển thị (không chỉ khi scroll) ===== */
+  .screen[data-s="advideo"] .stop{
+    background:rgba(242,244,243,.78); backdrop-filter:blur(22px) saturate(170%); -webkit-backdrop-filter:blur(22px) saturate(170%);
+    border-bottom:1px solid var(--line)}
+  .phone.dark .screen[data-s="advideo"] .stop{
+    background:#0E100F; backdrop-filter:none; -webkit-backdrop-filter:none; border-bottom:1px solid rgba(255,255,255,.08)}
+
+  /* ===== Store header: viền line + glass luôn hiển thị (đồng bộ AdVideo) ===== */
+  .screen[data-s="store"] .stop{
+    background:rgba(242,244,243,.78); backdrop-filter:blur(22px) saturate(170%); -webkit-backdrop-filter:blur(22px) saturate(170%);
+    border-bottom:1px solid var(--line)}
+  .phone.dark .screen[data-s="store"] .stop{
+    background:#0E100F; backdrop-filter:none; -webkit-backdrop-filter:none; border-bottom:1px solid rgba(255,255,255,.08)}
+
+  /* ===== Credit chip ◆40 → pill emerald-soft (đồng bộ Store/AdVideo/Product) ===== */
+  .chipc{background:var(--em-soft); color:var(--em); border:1px solid transparent; box-shadow:none; backdrop-filter:none; -webkit-backdrop-filter:none}
+  .phone.dark .chipc{background:rgba(46,196,148,.16); color:#7FD4B3}
+
+  /* ===== Filter chips (Store) → bo-vuông + viền + gradient active, chữ trần (bỏ icon) ===== */
+  .catchip{border-radius:13px; background:var(--card); border:1px solid var(--line); box-shadow:0 1px 2px rgba(0,0,0,.03); padding:9px 16px; color:var(--ink2); font-weight:500}
+  .catchip svg{display:none}
+  .catchip.on{background:linear-gradient(165deg,#0E5C43,#2EC494); color:#fff; border-color:transparent; box-shadow:0 6px 16px rgba(14,92,67,.28)}
+  .phone.dark .catchip{background:var(--card); border:1px solid var(--line)}
+  .phone.dark .catchip.on{color:#04140e; border-color:transparent}
+
+  /* ===== All-tools tile → card có viền (đồng bộ store_work .tgi) ===== */
+  .toolgrid{gap:10px}
+  .toolc{padding:13px 6px; gap:7px; background:linear-gradient(180deg,var(--card),var(--paper2)); border:1px solid var(--line); border-radius:16px; box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .toolc .ic{width:auto; height:auto; border-radius:0; border:none; background:none!important; backdrop-filter:none!important; -webkit-backdrop-filter:none!important; box-shadow:none!important}
+  .toolc .ic svg{width:23px; height:23px; stroke:var(--em)}
+  .toolc:hover .ic{transform:none; box-shadow:none!important}
+  .toolc .tl{font-size:10px}
+  .phone.dark .toolc{background:linear-gradient(180deg,var(--card),var(--paper2)); border:1px solid var(--line)}
+  .phone.dark .toolc .ic{background:none!important; box-shadow:none!important}
+  .phone.dark .toolc .ic svg{stroke:#7FD4B3}
+
+  /* ===== Popular tools → Image bento (1 featured ảnh + 3 compact) ===== */
+  .pop-bento{padding:0 22px; display:flex; flex-direction:column; gap:10px}
+  .pf{position:relative; height:126px; border-radius:18px; overflow:hidden; display:flex; align-items:flex-end; padding:15px; border:1px solid var(--line); box-shadow:0 10px 24px rgba(15,50,38,.1); cursor:pointer}
+  .pf:active{transform:scale(.99)}
+  .pf img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+  .pf .v{position:absolute; inset:0; background:linear-gradient(90deg,rgba(6,14,10,.85) 36%,rgba(6,14,10,.12))}
+  .pf .ft{position:relative; color:#fff}
+  .pf .ic{width:40px; height:40px; border-radius:12px; background:linear-gradient(160deg,#8FE9C8,#2EC494); color:#04241a; display:grid; place-items:center; margin-bottom:9px; box-shadow:0 6px 16px rgba(46,196,148,.4)}
+  .pf .ic svg{width:21px; height:21px; stroke:currentColor; fill:none; stroke-width:1.9}
+  .pf b{display:block; font-size:15px; font-weight:700}
+  .pf span{font-size:11px; opacity:.85}
+  .p3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:9px}
+  .pmini{background:linear-gradient(180deg,var(--card),var(--paper2)); border:1px solid var(--line); border-radius:15px; padding:12px 8px; display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center; box-shadow:0 1px 2px rgba(0,0,0,.04); cursor:pointer}
+  .pmini:active{transform:scale(.97)}
+  .pmini .ic{width:36px; height:36px; border-radius:11px; background:linear-gradient(160deg,#0E5C43,#2EC494); color:#fff; display:grid; place-items:center}
+  .pmini .ic svg{width:18px; height:18px; stroke:currentColor; fill:none; stroke-width:1.9}
+  .phone.dark .pmini .ic{color:#04140e}
+  .pmini b{font-size:12px; font-weight:600; color:var(--ink)}
+
+  /* ===== Product hub: header viền line + card B (menu ⋯) ===== */
+  .screen[data-s="product"] .prhd{
+    background:rgba(242,244,243,.78); backdrop-filter:blur(22px) saturate(170%); -webkit-backdrop-filter:blur(22px) saturate(170%);
+    border-bottom:1px solid var(--line); padding-bottom:12px}
+  .phone.dark .screen[data-s="product"] .prhd{background:#0E100F; backdrop-filter:none; -webkit-backdrop-filter:none; border-bottom:1px solid rgba(255,255,255,.08)}
+  .prcard.cardb{position:relative; overflow:visible; border:1px solid var(--line)}
+  .prcard.cardb .prthumb{border-radius:16px 16px 0 0; aspect-ratio:4/5}
+  .prcard.cardb .prthumb::after{display:none}
+  .prcard.cardb .prmeta{display:flex; align-items:center; gap:8px; padding:11px 11px 12px}
+  .prcard.cardb .prmeta .tx{flex:1; min-width:0}
+  .prcard.cardb .nm{font-size:14px; font-weight:600; letter-spacing:-.2px; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .prcard.cardb .sub{font-size:11px; color:var(--muted); margin-top:1px}
+  .prcard.cardb .kb{width:32px; height:32px; border-radius:10px; flex:none; display:grid; place-items:center; color:var(--ink2); background:var(--paper2); border:1px solid var(--line); transition:background .15s,color .15s}
+  .prcard.cardb .kb svg{width:18px; height:18px; fill:currentColor}
+  .prcard.cardb.open .kb{background:var(--em-soft); border-color:transparent; color:var(--em)}
+  .prmenu{display:none; position:absolute; z-index:30; right:10px; bottom:52px; width:190px; background:var(--card); border:1px solid var(--line); border-radius:15px; padding:6px;
+    box-shadow:0 1px 2px rgba(0,0,0,.05),0 20px 46px rgba(6,20,14,.26)}
+  .prcard.cardb.open .prmenu{display:block}
+  .phone.dark .prmenu{box-shadow:0 20px 46px rgba(0,0,0,.55)}
+  .prmenu button{display:flex; align-items:center; gap:11px; width:100%; padding:10px 11px; border-radius:10px; font-size:13px; font-weight:600; color:var(--ink); text-align:left; border:none; background:none; cursor:pointer}
+  .prmenu button svg{width:18px; height:18px; stroke:var(--ink2); fill:none; stroke-width:1.8}
+  .prmenu button:hover{background:var(--paper2)}
+  .prmenu .prim{background:var(--em-soft); color:var(--em)} .prmenu .prim svg{stroke:var(--em)}
+  .prmenu .prsep{height:1px; background:var(--line); margin:5px 8px}
+  .prmenu .del{color:#DB5A54} .prmenu .del svg{stroke:#DB5A54}
+  .prmenu .prcaret{position:absolute; right:16px; bottom:-6px; width:12px; height:12px; background:var(--card); border-right:1px solid var(--line); border-bottom:1px solid var(--line); transform:rotate(45deg)}
+
+  /* ===== AdVideo internals: high-impression tag gradient + impressions mint ===== */
+  .screen[data-s="advideo"] .hitag{background:linear-gradient(135deg,rgba(46,196,148,.92),rgba(14,92,67,.9)); border-color:transparent; color:#fff}
+  .screen[data-s="advideo"] .himeta .v{color:#8FE9C8}
+  .screen[data-s="advideo"] .himeta .v svg{stroke:#8FE9C8}
+
+  /* ===== Apply: filter chip bo-vuông + gradient (đồng bộ Store) ===== */
+  .apchip{border-radius:13px; font-weight:500}
+  .apchip svg{display:none}
+  .apchip.on{background:linear-gradient(165deg,#0E5C43,#2EC494); color:#fff; border-color:transparent; box-shadow:0 6px 16px rgba(14,92,67,.28)}
+  .phone.dark .apchip.on{color:#04140e}
+  /* Scene card: thêm viền --line */
+  .scenecard .si{border:1px solid var(--line)}
+  /* ===== Product detail: tab active gradient ===== */
+  .pdtab{border-radius:12px}
+  .pdtab.on{background:linear-gradient(165deg,#0E5C43,#2EC494); color:#fff; border-color:transparent; box-shadow:0 6px 16px rgba(14,92,67,.28)}
+  .phone.dark .pdtab.on{color:#04140e}
+
+  /* ===== Paywall Story-tier: plan sel mint + CTA bright liquid glass breathing ===== */
+  #paywall .pw-plan.sel{background:rgba(143,233,200,.16); border-color:#8FE9C8; box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+  #paywall .pw-tl .d.on{background:linear-gradient(160deg,#8FE9C8,#2EC494); color:#04241a; border-color:transparent}
+  #paywall .pw-cta{background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,.86)); backdrop-filter:blur(26px) saturate(150%) brightness(1.15); -webkit-backdrop-filter:blur(26px) saturate(150%) brightness(1.15); border:1px solid rgba(255,255,255,.95); color:#0a3a2c; animation:pwBreathe 3s ease-in-out infinite}
+  #paywall .pw-cta svg{stroke:#0a3a2c}
+  @keyframes pwBreathe{0%,100%{box-shadow:0 0 0 0 rgba(143,233,200,.5)}50%{box-shadow:0 0 26px 3px rgba(143,233,200,.55)}}
+  @media (prefers-reduced-motion:reduce){ #paywall .pw-cta{animation:none} }
+
+  /* ===== Welcome orbit tiles → chiều sâu (CHỈ đổi ảnh quay tròn, giữ nguyên mọi thứ khác) ===== */
+  .as-tile{box-shadow:0 2px 6px rgba(26,24,20,.16), 0 18px 34px rgba(26,24,20,.30); border:1.5px solid rgba(255,255,255,.72)}
+  .as-tile::after{content:''; position:absolute; inset:0; border-radius:18px; pointer-events:none; background:linear-gradient(150deg,rgba(255,255,255,.44),rgba(255,255,255,0) 46%); mix-blend-mode:screen}
+  .phone.dark .as-tile{border-color:rgba(255,255,255,.16); box-shadow:0 2px 6px rgba(0,0,0,.4), 0 18px 34px rgba(0,0,0,.55)}
 </style>
 </head>
 <body>
@@ -1341,11 +1453,16 @@
         <!-- ░░ POPULAR TOOLS · 2×2 (label + sample image) ░░ -->
         <div class="sec-h" data-grp="popular"><h3>Popular tools <span class="chev">›</span></h3></div>
         <div class="sec-sub" data-grp="popular">One-tap AI fixes for your product shots</div>
-        <div class="ptools" data-grp="popular">
-          <div class="ptool" data-cat="listing social marketing" onclick="toast('Remove background (demo)')"><b>Remove<br>background</b><img src="store/product_perfume/04_lifestyle.jpg" alt=""></div>
-          <div class="ptool" data-cat="listing social" onclick="toast('Resize (demo)')"><b>Resize</b><img src="store/product_tote_v2/05_lifestyle.jpg" alt=""></div>
-          <div class="ptool" data-cat="listing social marketing" onclick="toast('Retouch (demo)')"><b>Retouch</b><img src="store/product_jewelry/04_model_ed.png" alt=""></div>
-          <div class="ptool" data-cat="listing social marketing" onclick="toast('Upscale (demo)')"><b>Upscale</b><img src="store/product_candle/04_lifestyle.jpg" alt=""></div>
+        <div class="pop-bento" data-grp="popular">
+          <div class="pf" data-cat="listing social marketing" onclick="toast('Remove background (demo)')">
+            <img src="store/product_perfume/04_lifestyle.jpg" alt=""><div class="v"></div>
+            <div class="ft"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" stroke-dasharray="3 3"/><circle cx="12" cy="10" r="3"/><path d="M6.5 18a5.5 5.5 0 0 1 11 0"/></svg></div><b>Remove background</b><span>Clean cutout in one tap</span></div>
+          </div>
+          <div class="p3">
+            <div class="pmini" data-cat="listing social" onclick="toast('Resize (demo)')"><div class="ic"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div><b>Resize</b></div>
+            <div class="pmini" data-cat="listing social marketing" onclick="toast('Retouch (demo)')"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg></div><b>Retouch</b></div>
+            <div class="pmini" data-cat="listing social marketing" onclick="toast('Upscale (demo)')"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></div><b>Upscale</b></div>
+          </div>
         </div>
 
 
@@ -1934,7 +2051,6 @@
       <div class="pw-scrim"></div>
       <div class="pw-x" id="pwx" title="Close">✕</div>
       <div class="pw-card">
-        <span class="guard"><span>✦</span> AdShort Pro</span>
         <h2 class="pw-head">One photo in.<br><em>Ad shorts out.</em></h2>
         <ul class="pw-list">
           <li><span class="ck">✓</span><span class="tx">One photo → <b>ad shorts that win the feed</b></span></li>
@@ -1943,16 +2059,16 @@
         </ul>
         <div class="pw-tl">
           <div class="tlx"><span class="d on">✓</span><b>Today</b><small>Full access, free</small></div>
-          <div class="tlx"><span class="d">🔔</span><b>Day 5</b><small>We remind you</small></div>
-          <div class="tlx"><span class="d">★</span><b>Day 7</b><small>Plan starts</small></div>
+          <div class="tlx"><span class="d">🔔</span><b>Day 2</b><small>We remind you</small></div>
+          <div class="tlx"><span class="d">★</span><b>Day 3</b><small>Plan starts</small></div>
         </div>
         <div class="pw-plans pw-plans-3">
           <button class="pw-plan" data-tier="creator"><span class="pl-name">Creator</span><span class="pl-price">$14.99<span>/mo</span></span><span class="pl-note">Make your own ad shorts</span></button>
           <button class="pw-plan sel" data-tier="studio"><span class="save">POPULAR</span><span class="pl-name">Studio</span><span class="pl-price">$29<span>/mo</span></span><span class="pl-note">Scored to win on every marketplace</span></button>
           <button class="pw-plan" data-tier="agency"><span class="pl-name">Agency</span><span class="pl-price">$69<span>/mo</span></span><span class="pl-note">Produce multiple creatives at once</span></button>
         </div>
-        <button class="cta pw-cta" onclick="toast('Trial started (demo)'); closePaywall();">Try 7 days free<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-        <div class="pw-sub">No charge today · we'll remind you before it ends · cancel anytime</div>
+        <button class="cta pw-cta" onclick="toast('Trial started (demo)'); closePaywall();">Try 3 days free<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <div class="pw-sub">No charge today · we'll remind you on day 2 · cancel anytime</div>
         <div class="pw-foot"><span>Restore</span><span class="sep">·</span><span>Terms</span><span class="sep">·</span><span>Privacy</span></div>
       </div>
     </div>
@@ -2133,17 +2249,31 @@
   var PLAY_SVG='<svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg>';
   var curProduct=null;
   function prAssets(p){ return p.photos.length+' photo'+(p.photos.length===1?'':'s')+' · '+p.videos.length+' video'+(p.videos.length===1?'':'s'); }
+  var VID_SVG='<svg viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/></svg>';
+  var IMGAD_SVG='<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 16l5-5 4 4 3-3 6 6"/><circle cx="8.5" cy="9" r="1.5"/></svg>';
+  var PEN_SVG='<svg viewBox="0 0 24 24"><path d="M14.5 4.5l5 5M4 20l1-4L16 4.5a2 2 0 0 1 3 3L7.5 19 4 20z"/></svg>';
+  var COPY_SVG='<svg viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M4 16V4h12"/></svg>';
+  var TRASH_SVG='<svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V5h6v2M6 7l1 13h10l1-13"/></svg>';
+  var DOTS_SVG='<svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/></svg>';
   function prCard(p,i){
-    var hasV=p.videos.length>0;
-    var vb=hasV?'<span class="prvbadge">'+PLAY_SVG+p.videos.length+'</span>':'';
-    var play=hasV?'<div class="prplay">'+PLAY_SVG+'</div>':'';
-    var act=hasV
-      ? '<button class="act" onclick="event.stopPropagation();toast(\'Export '+p.name+' (demo)\')">Export</button>'
-      : '<button class="act go" onclick="event.stopPropagation();toast(\'Make a video → AdVideo (demo)\')">'+PLAY_SVG+'Make video</button>';
-    return '<div class="prcard" style="--d:'+(i*60)+'ms" onclick="openProduct(\''+p.id+'\')">'
-      +'<div class="prthumb"><img src="'+p.thumb+'" alt="">'+vb+play+'<div class="prnm">'+p.name+'</div></div>'
-      +'<div class="prmeta"><div class="as">'+prAssets(p)+' · '+p.updated+'</div>'+act+'</div></div>';
+    return '<div class="prcard cardb" style="--d:'+(i*60)+'ms" onclick="openProduct(\''+p.id+'\')">'
+      +'<div class="prthumb"><img src="'+p.thumb+'" alt=""></div>'
+      +'<div class="prmeta"><div class="tx"><div class="nm">'+p.name+'</div><div class="sub">'+p.updated+'</div></div>'
+      +'<button class="kb" aria-label="More" onclick="event.stopPropagation();toggleCardMenu(this)">'+DOTS_SVG+'</button>'
+      +'<div class="prmenu" onclick="event.stopPropagation()">'
+        +'<button class="prim" onclick="event.stopPropagation();closeCardMenus();toast(\'Make video → AdVideo (demo)\')">'+VID_SVG+'Make video</button>'
+        +'<button onclick="event.stopPropagation();closeCardMenus();toast(\'Make image ad (demo)\')">'+IMGAD_SVG+'Make image ad</button>'
+        +'<div class="prsep"></div>'
+        +'<button onclick="event.stopPropagation();closeCardMenus();toast(\'Rename (demo)\')">'+PEN_SVG+'Rename</button>'
+        +'<button onclick="event.stopPropagation();closeCardMenus();toast(\'Duplicate (demo)\')">'+COPY_SVG+'Duplicate</button>'
+        +'<div class="prsep"></div>'
+        +'<button class="del" onclick="event.stopPropagation();closeCardMenus();toast(\'Delete '+p.name+' (demo)\')">'+TRASH_SVG+'Delete</button>'
+        +'<div class="prcaret"></div>'
+      +'</div></div></div>';
   }
+  window.closeCardMenus=function(){ [].slice.call(document.querySelectorAll('.prcard.open')).forEach(function(c){ c.classList.remove('open'); }); };
+  window.toggleCardMenu=function(btn){ var card=btn.closest('.prcard'); var isOpen=card.classList.contains('open'); closeCardMenus(); if(!isOpen) card.classList.add('open'); };
+  document.addEventListener('click',function(){ closeCardMenus(); });
   window.showProductHub=function(){
     var host=document.getElementById('prGrid'); if(!host) return;
     host.innerHTML=PRODUCTS.map(prCard).join('');
@@ -2365,7 +2495,7 @@
     return '<div class="hicard anim" data-i="'+i+'" style="--d:'+(d+=44)+'ms"><img class="m" src="'+c.src+'" alt="">'
       +'<div class="hisc"></div><span class="hitag">'+c.tag+'</span>'
       +'<span class="hiplay"><svg width="14" height="16" viewBox="0 0 22 24" fill="#fff"><path d="M2 2.5 L20 12 L2 21.5 Z"/></svg></span>'
-      +'<div class="himeta"><div class="v"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>'+c.views+'</div><div class="h">'+c.handle+'</div></div></div>';
+      +'<div class="himeta"><div class="v"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg>'+c.views+'</div><div class="h">'+c.handle+'</div></div></div>';
   }).join('');
 
   /* ===== format templates grid ===== */
