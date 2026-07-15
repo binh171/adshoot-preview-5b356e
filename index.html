@@ -1368,6 +1368,7 @@
 <style>
 /* ===== AdShort Store Paywall (merged 2026-07-15) — classes p2* + scoped #paywall to avoid collisions ===== */
 #paywall{--g:#1FD177;--gi:#04160d;--pglow:rgba(31,209,119,.4);--pink:#eef4f0;--pmuted:#9fb0a8;--pdim:#78877f;
+  --tacc:#1FD177;--tglow:rgba(31,209,119,.4);--tink:#04160d;
   --pser:'Fraunces',Georgia,serif;--psan:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,sans-serif}
 #paywall .p2wrap{position:absolute;inset:0;display:flex;flex-direction:column;overflow-y:auto;
   background:linear-gradient(180deg,#08130d 0%,#060d0a 60%,#040907 100%);font-family:var(--psan);color:var(--pink)}
@@ -1375,7 +1376,7 @@
 #paywall .p2hero img{width:100%;height:100%;object-fit:cover;display:block}
 #paywall .p2scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,9,7,.15) 0%,rgba(4,9,7,.05) 42%,rgba(6,13,10,.72) 82%,#08130d 100%)}
 #paywall .p2hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;z-index:2;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.62) 6%,rgba(255,255,255,.62) 94%,transparent)}
+  background:linear-gradient(90deg,transparent,var(--tacc) 6%,var(--tacc) 94%,transparent)}
 #paywall .p2brand{position:absolute;top:16px;left:18px;z-index:3;display:inline-flex;align-items:center;gap:8px}
 #paywall .p2brand .bl-ico{width:30px;height:30px;flex:none;filter:drop-shadow(0 1px 5px rgba(0,0,0,.45))}
 #paywall .p2brand .bl-wm{font-family:var(--pser);font-weight:500;font-size:21px;color:#fff;letter-spacing:-.4px;line-height:1;text-shadow:0 1px 6px rgba(0,0,0,.45)}
@@ -1383,15 +1384,15 @@
 #paywall .p2x{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;
   background:rgba(0,0,0,.35);backdrop-filter:blur(8px);color:#fff;font-size:15px;cursor:pointer;z-index:5;display:grid;place-items:center}
 #paywall .p2cap{position:absolute;left:20px;right:20px;bottom:48px;z-index:2}
-#paywall .p2eyebrow{color:var(--g);font-size:12px;font-weight:600;letter-spacing:.6px;text-transform:uppercase}
+#paywall .p2eyebrow{color:var(--tacc);font-size:12px;font-weight:600;letter-spacing:.6px;text-transform:uppercase}
 #paywall .p2cap h2{font-family:var(--pser);font-weight:600;font-size:26px;line-height:1.05;margin:5px 0 0;color:#fff;max-width:280px}
 #paywall .p2switch{display:flex;gap:5px;background:rgba(9,18,13,.5);border:1px solid rgba(255,255,255,.14);
   border-radius:999px;padding:5px;margin:-26px 30px 0;position:relative;z-index:4;backdrop-filter:blur(22px);
   box-shadow:0 12px 30px -12px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.07)}
 #paywall .p2switch button{flex:1;border:0;background:none;color:var(--pmuted);font-family:var(--psan);
   font-size:13.5px;font-weight:600;letter-spacing:.2px;padding:11px 0;border-radius:999px;cursor:pointer;position:relative}
-#paywall .p2switch button.on{background:var(--g);color:var(--gi);font-weight:800;
-  box-shadow:0 5px 16px -4px var(--pglow), inset 0 1px 0 rgba(255,255,255,.3)}
+#paywall .p2switch button.on{background:var(--tacc);color:var(--tink);font-weight:800;
+  box-shadow:0 5px 16px -4px var(--tglow), inset 0 1px 0 rgba(255,255,255,.3)}
 #paywall .p2pop{position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:#fff;color:#08130d;
   font-size:8px;font-weight:800;padding:2px 7px;border-radius:999px;letter-spacing:.4px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.3)}
 #paywall .p2body{flex:1;display:flex;flex-direction:column;padding:18px 20px 14px}
@@ -2827,13 +2828,13 @@
 (function(){
   var BASE='onboarding/';
   var TIERS={
-    creator:{img:BASE+'product_lipstick_v2/04_on_lips.jpg',eyebrow:'Creator plan',tag:'For the solo seller',trial:false,
+    creator:{img:BASE+'product_lipstick_v2/04_on_lips.jpg',eyebrow:'Creator plan',tag:'For the solo seller',trial:false,acc:'#1FD177',glow:'rgba(31,209,119,.4)',
       feats:['Video ads from a single photo','50 AI photo edits / month','Unlimited background removal','Sized for every marketplace · no watermark'],
       my:'19.99',yr:'167.99',ymo:'13.99',save:'30'},
-    studio:{img:BASE+'product_jewelry/04_model_ed.png',eyebrow:'Studio plan',tag:'Scored to win the feed',pop:true,trial:true,
+    studio:{img:BASE+'product_jewelry/04_model_ed.png',eyebrow:'Studio plan',tag:'Scored to win the feed',pop:true,trial:true,acc:'#E5B75A',glow:'rgba(229,183,90,.4)',
       feats:['Everything in Creator','80 AI photo edits / month','Auto-score your listing to win the feed','Winning-template library'],
       my:'29.99',yr:'251.99',ymo:'20.99',save:'30'},
-    agency:{img:BASE+'product_chrono/03_on_wrist.jpg',eyebrow:'Agency plan',tag:'Built for high volume',trial:false,
+    agency:{img:BASE+'product_chrono/03_on_wrist.jpg',eyebrow:'Agency plan',tag:'Built for high volume',trial:false,cta:'Continue',acc:'#3D5AF1',glow:'rgba(61,90,241,.5)',ink:'#fff',
       feats:['Everything in Studio','200 AI photo edits / month','Every ad format in one run','Bulk export · Meta · TikTok · Shopify · Amazon'],
       my:'69.99',yr:'587.99',ymo:'48.99',save:'30'}
   };
@@ -2841,6 +2842,7 @@
   function $(id){return document.getElementById(id);}
   function render(){
     var t=TIERS[tier]; if(!$('p2heroImg')) return;
+    var pw=$('paywall'); pw.style.setProperty('--tacc',t.acc); pw.style.setProperty('--tglow',t.glow); pw.style.setProperty('--tink',t.ink||'#04160d');
     $('p2heroImg').src=t.img;
     $('p2eyebrow').textContent=t.eyebrow;
     $('p2tagline').textContent=t.tag;
@@ -2858,7 +2860,7 @@
       $('p2cta').textContent='Start 3-day free trial';
       $('p2disc').textContent='Auto-renews after the free trial · cancel anytime';
     }else{
-      $('p2cta').textContent='Unlock more';
+      $('p2cta').textContent=t.cta||'Unlock more';
       $('p2disc').textContent='Cancel anytime';
     }
   }
