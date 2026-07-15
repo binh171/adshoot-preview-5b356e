@@ -1365,6 +1365,61 @@
   .as-tile::after{content:''; position:absolute; inset:0; border-radius:18px; pointer-events:none; background:linear-gradient(150deg,rgba(255,255,255,.44),rgba(255,255,255,0) 46%); mix-blend-mode:screen}
   .phone.dark .as-tile{border-color:rgba(255,255,255,.16); box-shadow:0 2px 6px rgba(0,0,0,.4), 0 18px 34px rgba(0,0,0,.55)}
 </style>
+<style>
+/* ===== AdShort Store Paywall (merged 2026-07-15) — classes p2* + scoped #paywall to avoid collisions ===== */
+#paywall{--g:#1FD177;--gi:#04160d;--pglow:rgba(31,209,119,.4);--pink:#eef4f0;--pmuted:#9fb0a8;--pdim:#78877f;
+  --pser:'Fraunces',Georgia,serif;--psan:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,sans-serif}
+#paywall .p2wrap{position:absolute;inset:0;display:flex;flex-direction:column;overflow-y:auto;
+  background:linear-gradient(180deg,#08130d 0%,#060d0a 60%,#040907 100%);font-family:var(--psan);color:var(--pink)}
+#paywall .p2hero{position:relative;height:330px;flex:none;overflow:hidden}
+#paywall .p2hero img{width:100%;height:100%;object-fit:cover;display:block}
+#paywall .p2scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,9,7,.15) 0%,rgba(4,9,7,.05) 42%,rgba(6,13,10,.72) 82%,#08130d 100%)}
+#paywall .p2hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;z-index:2;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.62) 6%,rgba(255,255,255,.62) 94%,transparent)}
+#paywall .p2brand{position:absolute;top:16px;left:18px;z-index:3;display:inline-flex;align-items:center;gap:8px}
+#paywall .p2brand .bl-ico{width:30px;height:30px;flex:none;filter:drop-shadow(0 1px 5px rgba(0,0,0,.45))}
+#paywall .p2brand .bl-wm{font-family:var(--pser);font-weight:500;font-size:21px;color:#fff;letter-spacing:-.4px;line-height:1;text-shadow:0 1px 6px rgba(0,0,0,.45)}
+#paywall .p2brand .bl-wm i{font-style:italic;color:var(--g)}
+#paywall .p2x{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;
+  background:rgba(0,0,0,.35);backdrop-filter:blur(8px);color:#fff;font-size:15px;cursor:pointer;z-index:5;display:grid;place-items:center}
+#paywall .p2cap{position:absolute;left:20px;right:20px;bottom:48px;z-index:2}
+#paywall .p2eyebrow{color:var(--g);font-size:12px;font-weight:600;letter-spacing:.6px;text-transform:uppercase}
+#paywall .p2cap h2{font-family:var(--pser);font-weight:600;font-size:26px;line-height:1.05;margin:5px 0 0;color:#fff;max-width:280px}
+#paywall .p2switch{display:flex;gap:5px;background:rgba(9,18,13,.5);border:1px solid rgba(255,255,255,.14);
+  border-radius:999px;padding:5px;margin:-26px 30px 0;position:relative;z-index:4;backdrop-filter:blur(22px);
+  box-shadow:0 12px 30px -12px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.07)}
+#paywall .p2switch button{flex:1;border:0;background:none;color:var(--pmuted);font-family:var(--psan);
+  font-size:13.5px;font-weight:600;letter-spacing:.2px;padding:11px 0;border-radius:999px;cursor:pointer;position:relative}
+#paywall .p2switch button.on{background:var(--g);color:var(--gi);font-weight:800;
+  box-shadow:0 5px 16px -4px var(--pglow), inset 0 1px 0 rgba(255,255,255,.3)}
+#paywall .p2pop{position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:#fff;color:#08130d;
+  font-size:8px;font-weight:800;padding:2px 7px;border-radius:999px;letter-spacing:.4px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+#paywall .p2body{flex:1;display:flex;flex-direction:column;padding:18px 20px 14px}
+#paywall .p2feats{display:grid;gap:13px;list-style:none;margin:0;padding:0}
+#paywall .p2feats li{display:flex;gap:11px;align-items:center;font-size:14px;color:#d3e2db;line-height:1.3}
+#paywall .p2feats .ck{width:25px;height:25px;flex:none;border-radius:50%;background:rgba(31,209,119,.16);
+  border:1px solid rgba(31,209,119,.32);color:var(--g);display:grid;place-items:center;font-size:12px;font-weight:800}
+#paywall .p2cycle{display:grid;gap:10px;margin-top:20px}
+#paywall .p2opt{position:relative;display:flex;align-items:center;gap:12px;width:100%;text-align:left;cursor:pointer;
+  background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.12);border-radius:15px;padding:15px 16px;color:inherit;font-family:var(--psan)}
+#paywall .p2opt.sel{border-color:var(--g);background:linear-gradient(180deg,rgba(31,209,119,.1),rgba(31,209,119,.03));box-shadow:0 0 0 1px var(--g)}
+#paywall .p2radio{width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.12);flex:none}
+#paywall .p2opt.sel .p2radio{border-color:var(--g);background:radial-gradient(circle at 50% 50%,var(--g) 0 6px,transparent 7px)}
+#paywall .p2lbl{flex:1}
+#paywall .p2lbl b{font-size:14.5px;display:block}
+#paywall .p2lbl small{color:var(--pmuted);font-size:11.5px}
+#paywall .p2amt{text-align:right;white-space:nowrap}
+#paywall .p2amt b{font-size:16px}
+#paywall .p2amt small{display:block;color:var(--pdim);font-size:11px}
+#paywall .p2tag{position:absolute;top:-8px;right:14px;background:var(--g);color:var(--gi);
+  font-size:9px;font-weight:800;padding:2px 7px;border-radius:999px;letter-spacing:.3px}
+#paywall .p2cta{margin-top:18px;width:100%;border:0;cursor:pointer;font-family:var(--psan);font-weight:800;
+  font-size:16.5px;color:var(--gi);background:var(--g);border-radius:15px;padding:16px;box-shadow:0 12px 30px -12px var(--pglow)}
+#paywall .p2disc{margin:11px 4px 0;text-align:center;color:var(--pdim);font-size:10.5px;line-height:1.5}
+#paywall .p2foot{margin-top:auto;padding-top:14px;display:flex;justify-content:center;gap:9px;font-size:11.5px;color:var(--pmuted)}
+#paywall .p2foot a{color:var(--pmuted);text-decoration:none}
+#paywall .p2foot .p2sep{color:rgba(255,255,255,.14)}
+</style>
 </head>
 <body>
   <div class="phone">
@@ -2047,29 +2102,49 @@
 
     <!-- ===== PAYWALL ===== -->
     <div id="paywall">
-      <div class="pw-bg"><img src="onboarding/product_jewelry/04_model_ed.png" alt=""></div>
-      <div class="pw-scrim"></div>
-      <div class="pw-x" id="pwx" title="Close">✕</div>
-      <div class="pw-card">
-        <h2 class="pw-head">One photo in.<br><em>Ad shorts out.</em></h2>
-        <ul class="pw-list">
-          <li><span class="ck">✓</span><span class="tx">One photo → <b>ad shorts that win the feed</b></span></li>
-          <li><span class="ck">✓</span><span class="tx"><b>On-model &amp; editorial-quality</b> — no shoot, no studio</span></li>
-          <li><span class="ck">✓</span><span class="tx">Auto-scored to pass <b>each marketplace's rules</b></span></li>
-        </ul>
-        <div class="pw-tl">
-          <div class="tlx"><span class="d on">✓</span><b>Today</b><small>Full access, free</small></div>
-          <div class="tlx"><span class="d">🔔</span><b>Day 2</b><small>We remind you</small></div>
-          <div class="tlx"><span class="d">★</span><b>Day 3</b><small>Plan starts</small></div>
+      <div class="p2wrap">
+        <div class="p2hero">
+          <div class="brandlock p2brand">
+            <svg class="bl-ico" viewBox="0 0 84 84" aria-hidden="true">
+              <circle cx="42" cy="42" r="32" fill="none" stroke="#1FD177" stroke-width="5"/>
+              <circle cx="42" cy="42" r="22" fill="none" stroke="#D8B66A" stroke-width="2.6"/>
+              <path d="M47 42 L39 37.2 L39 46.8 Z" fill="#D8B66A"/>
+            </svg>
+            <span class="bl-wm">Ad<i>Short</i></span>
+          </div>
+          <div class="pw-x p2x" id="pwx" title="Close">✕</div>
+          <img id="p2heroImg" alt="">
+          <div class="p2scrim"></div>
+          <div class="p2cap"><div class="p2eyebrow" id="p2eyebrow"></div><h2 id="p2tagline"></h2></div>
         </div>
-        <div class="pw-plans pw-plans-3">
-          <button class="pw-plan" data-tier="creator"><span class="pl-name">Creator</span><span class="pl-price">$14.99<span>/mo</span></span><span class="pl-note">Make your own ad shorts</span></button>
-          <button class="pw-plan sel" data-tier="studio"><span class="save">POPULAR</span><span class="pl-name">Studio</span><span class="pl-price">$29<span>/mo</span></span><span class="pl-note">Scored to win on every marketplace</span></button>
-          <button class="pw-plan" data-tier="agency"><span class="pl-name">Agency</span><span class="pl-price">$69<span>/mo</span></span><span class="pl-note">Produce multiple creatives at once</span></button>
+        <div class="p2switch">
+          <button data-t="creator" onclick="p2setTier('creator')">Creator</button>
+          <button data-t="studio" onclick="p2setTier('studio')">Studio<span class="p2pop" id="p2popTag">POPULAR</span></button>
+          <button data-t="agency" onclick="p2setTier('agency')">Agency</button>
         </div>
-        <button class="cta pw-cta" onclick="toast('Trial started (demo)'); closePaywall();">Try 3 days free<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-        <div class="pw-sub">No charge today · we'll remind you on day 2 · cancel anytime</div>
-        <div class="pw-foot"><span>Restore</span><span class="sep">·</span><span>Terms</span><span class="sep">·</span><span>Privacy</span></div>
+        <div class="p2body">
+          <ul class="p2feats" id="p2feats"></ul>
+          <div class="p2cycle">
+            <button class="p2opt" id="p2optYear" onclick="p2setBilling('yearly')">
+              <span class="p2tag" id="p2trialTag">3-DAY FREE TRIAL</span>
+              <span class="p2radio"></span>
+              <span class="p2lbl"><b>Yearly</b><small id="p2yearSub"></small></span>
+              <span class="p2amt"><b id="p2yearMo"></b><small id="p2yearSave"></small></span>
+            </button>
+            <button class="p2opt" id="p2optMonth" onclick="p2setBilling('monthly')">
+              <span class="p2radio"></span>
+              <span class="p2lbl"><b>Monthly</b><small>Flexible · cancel anytime</small></span>
+              <span class="p2amt"><b id="p2monthMo"></b></span>
+            </button>
+          </div>
+          <button class="p2cta" id="p2cta" onclick="toast('Trial started (demo)'); closePaywall();"></button>
+          <p class="p2disc" id="p2disc"></p>
+          <div class="p2foot">
+            <a>Restore Purchases</a><span class="p2sep">·</span>
+            <a>Terms of Use (EULA)</a><span class="p2sep">·</span>
+            <a>Privacy Policy</a>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -2747,5 +2822,50 @@
 })();
 </script>
 
+<script>
+/* ===== AdShort Store Paywall logic (merged 2026-07-15) ===== */
+(function(){
+  var BASE='onboarding/';
+  var TIERS={
+    creator:{img:BASE+'product_lipstick_v2/04_on_lips.jpg',eyebrow:'Creator plan',tag:'For the solo seller',trial:false,
+      feats:['Video ads from a single photo','50 AI photo edits / month','Unlimited background removal','Sized for every marketplace · no watermark'],
+      my:'19.99',yr:'167.99',ymo:'13.99',save:'30'},
+    studio:{img:BASE+'product_jewelry/04_model_ed.png',eyebrow:'Studio plan',tag:'Scored to win the feed',pop:true,trial:true,
+      feats:['Everything in Creator','80 AI photo edits / month','Auto-score your listing to win the feed','Winning-template library'],
+      my:'29.99',yr:'251.99',ymo:'20.99',save:'30'},
+    agency:{img:BASE+'product_chrono/03_on_wrist.jpg',eyebrow:'Agency plan',tag:'Built for high volume',trial:false,
+      feats:['Everything in Studio','200 AI photo edits / month','Every ad format in one run','Bulk export · Meta · TikTok · Shopify · Amazon'],
+      my:'69.99',yr:'587.99',ymo:'48.99',save:'30'}
+  };
+  var tier='studio', billing='yearly';
+  function $(id){return document.getElementById(id);}
+  function render(){
+    var t=TIERS[tier]; if(!$('p2heroImg')) return;
+    $('p2heroImg').src=t.img;
+    $('p2eyebrow').textContent=t.eyebrow;
+    $('p2tagline').textContent=t.tag;
+    $('p2popTag').style.display = tier==='studio' ? '' : 'none';
+    [].slice.call(document.querySelectorAll('#paywall .p2switch button')).forEach(function(b){b.classList.toggle('on',b.getAttribute('data-t')===tier);});
+    $('p2feats').innerHTML=t.feats.map(function(f){return '<li><span class="ck">✓</span><span>'+f+'</span></li>';}).join('');
+    $('p2trialTag').style.display = t.trial ? '' : 'none';
+    $('p2yearSub').textContent = t.trial ? '3-day free trial, then $'+t.yr+'/yr' : 'Billed $'+t.yr+'/yr';
+    $('p2yearMo').textContent='$'+t.ymo+'/mo';
+    $('p2yearSave').textContent='SAVE '+t.save+'%';
+    $('p2monthMo').textContent='$'+t.my+'/mo';
+    $('p2optYear').classList.toggle('sel',billing==='yearly');
+    $('p2optMonth').classList.toggle('sel',billing==='monthly');
+    if(t.trial && billing==='yearly'){
+      $('p2cta').textContent='Start 3-day free trial';
+      $('p2disc').textContent='Auto-renews after the free trial · cancel anytime';
+    }else{
+      $('p2cta').textContent='Unlock more';
+      $('p2disc').textContent='Cancel anytime';
+    }
+  }
+  window.p2setTier=function(x){tier=x;render();};
+  window.p2setBilling=function(x){billing=x;render();};
+  if(document.readyState!=='loading') render(); else document.addEventListener('DOMContentLoaded',render);
+})();
+</script>
 </body>
 </html>
